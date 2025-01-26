@@ -13,7 +13,16 @@ config_version=5
 config/name="First Game"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.png"
+config/windows_native_icon="res://assets/icon.ico"
+
+[autoload]
+
+Music="*res://scenes/music.tscn"
+
+[display]
+
+window/size/mode=3
 
 [input]
 
