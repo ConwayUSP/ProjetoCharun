@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjh6s23otceh2"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_ygm7g"]
+[ext_resource type="FontFile" uid="uid://bqhgbt03a1lyu" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="2_e26q1"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_ygm7g")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -146.0
+offset_top = -66.0
+offset_right = 33.0
+offset_bottom = -43.0
+theme_override_fonts/font = ExtResource("2_e26q1")
+theme_override_font_sizes/font_size = 8
+text = "Você coletou 0 moedas"
+horizontal_alignment = 1
+autowrap_mode = 2

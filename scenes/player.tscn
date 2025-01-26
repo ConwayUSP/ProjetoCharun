@@ -185,3 +185,8 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_1wfnr")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
