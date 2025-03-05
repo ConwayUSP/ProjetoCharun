@@ -5,5 +5,5 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if animation_player.current_animation != "pickup":
-		game_manager.add_point()
+		GameManager.add_point()
 		animation_player.play("pickup")

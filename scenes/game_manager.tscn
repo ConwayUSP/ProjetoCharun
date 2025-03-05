@@ -6,13 +6,15 @@
 [node name="GameManager" type="Node"]
 script = ExtResource("1_ygm7g")
 
-[node name="ScoreLabel" type="Label" parent="."]
-offset_left = -146.0
-offset_top = -66.0
-offset_right = 33.0
-offset_bottom = -43.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = -70.0
+offset_top = 40.0
+offset_right = 737.0
+offset_bottom = 72.0
 theme_override_fonts/font = ExtResource("2_e26q1")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 32
 text = "Você coletou 0 moedas"
 horizontal_alignment = 1
 autowrap_mode = 2
