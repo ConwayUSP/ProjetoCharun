@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 
 const SPEED = 130.0
@@ -8,7 +9,7 @@ const JUMP_VELOCITY = -300.0
 const VELOCIDADE_LIM = 300.0  
 const DANO_MULTI = 0.5   
 var can_jump = false
-var vida = 100.0  
+  
 
 var velocidade_queda = 0.0
 var  posicao_inicial = Vector2.ZERO  # Posição inicial
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		# Verificar se o personagem sofreu dano de queda
 		if velocidade_queda > VELOCIDADE_LIM:
 			var dano_queda = (velocidade_queda - VELOCIDADE_LIM) * DANO_MULTI
-			aplicar_dano_queda(dano_queda)  
+			GameManager.applyDamage(snappedf(dano_queda,0.01))
 		velocidade_queda = 0.0  
 
 	# Lidar com o pulo
@@ -61,21 +62,12 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 
-func aplicar_dano_queda(dano: float):
-	vida -= dano  
-	print("Dano de queda recebido: ", dano)
-	print("Vida restante: ", vida)
-	
-	if vida <= 0:
-		die()  
 
 # Função para a morte do personagem
-func die():
-	print("Personagem morreu!")
-	respawn()  
+#func die():
+#	print("Personagem morreu!")
+#	respawn()  
 
 # Função de respawn
-func respawn():
-	vida = 100.0 
-	position = posicao_inicial
-	print("Personagem respawnou")
+#func respawn():
+#	print("Personagem respawnou")
