@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdetuqx5opg44"]
+[gd_scene load_steps=15 format=3 uid="uid://bdetuqx5opg44"]
 
 [ext_resource type="Texture2D" uid="uid://ccvscexiw4v2e" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_m0546"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_nfap2"]
 [ext_resource type="PackedScene" uid="uid://bg23w27w22lxr" path="res://scenes/player.tscn" id="1_r07xc"]
-[ext_resource type="PackedScene" uid="uid://cjh6s23otceh2" path="res://scenes/game_manager.tscn" id="2_fvexq"]
 [ext_resource type="PackedScene" uid="uid://cvcbytlur5al1" path="res://scenes/killzone.tscn" id="3_mlquu"]
 [ext_resource type="PackedScene" uid="uid://t1bdtlkkdd8n" path="res://scenes/platform.tscn" id="3_osiwu"]
 [ext_resource type="PackedScene" uid="uid://bnye5oi4pmt7m" path="res://scenes/coin.tscn" id="4_7a35y"]
@@ -215,9 +214,6 @@ _data = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nfap2")
-
-[node name="GameManager" parent="." instance=ExtResource("2_fvexq")]
-unique_name_in_owner = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ruw0e")
