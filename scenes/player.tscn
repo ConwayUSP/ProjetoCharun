@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://bg23w27w22lxr"]
+[gd_scene load_steps=27 format=3 uid="uid://bg23w27w22lxr"]
 
 [ext_resource type="Texture2D" uid="uid://dtsmu32bn40rn" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_7xoee"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_hqe82"]
+[ext_resource type="Script" uid="uid://dkxqligkvgmtj" path="res://scripts/player.gd" id="1_hqe82"]
+[ext_resource type="Texture2D" uid="uid://dpq8nrnquaer4" path="res://assets/Holy VFX 01 Impact2.png" id="2_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v6f6"]
 atlas = ExtResource("1_7xoee")
@@ -177,9 +178,17 @@ position = Vector2(-1, -12)
 collision_layer = 2
 script = ExtResource("1_hqe82")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+position = Vector2(-9, -11)
+rotation = -2.96706
+scale = Vector2(0.729871, 0.729871)
+texture = ExtResource("2_qhqgy")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_76v08")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -187,6 +196,12 @@ position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_1wfnr")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.09
+
+[node name="FireCooldown" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(7, 5)
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]
