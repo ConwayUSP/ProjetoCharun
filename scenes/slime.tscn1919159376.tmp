@@ -40,10 +40,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
-size = Vector2(14, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr4jr"]
+size = Vector2(14, 15)
 
-[node name="Slime" type="Area2D"]
+[node name="Slime" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_nvlkd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -62,14 +62,8 @@ position = Vector2(0, -6)
 rotation = 1.5708
 target_position = Vector2(4.76837e-07, 7)
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("enemy")]
-position = Vector2(0, -6)
-collision_mask = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_hr4jr")
 script = ExtResource("3_n6pvg")
-enemy = NodePath("..")
-damage = 9999.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_n6pvg")
-
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+metadata/damage = 9999.0
