@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var fire_cooldown: Timer = $FireCooldown
@@ -33,8 +34,9 @@ func _physics_process(delta: float) -> void:
 		
 		# Verificar se o personagem sofreu dano de queda
 		if velocidade_queda > VELOCIDADE_LIM:
-			var dano_queda = (velocidade_queda - VELOCIDADE_LIM) * DANO_MULTI
-			GameManager.applyDamage(snappedf(dano_queda,0.01))
+			if !GameManager.imunidade:
+				var dano_queda = (velocidade_queda - VELOCIDADE_LIM) * DANO_MULTI
+				GameManager.applyDamage(snappedf(dano_queda,0.01))
 		velocidade_queda = 0.0  
 
 	# Lidar com o pulo
@@ -48,10 +50,18 @@ func _physics_process(delta: float) -> void:
 	# Virar o Sprite dependendo da direção
 	if direction > 0:
 		animated_sprite.flip_h = false
+		sprite.flip_h = false
+		sprite.position.x = -9
+		sprite.rotate(0.08)
 	elif direction < 0:
 		animated_sprite.flip_h = true
+		sprite.flip_h = true
+		sprite.position.x = 9
+		sprite.rotate(-0.08)
 			
 	# Reproduzir a animação
+	if GameManager.imunidade == true:
+		sprite.visible = true
 	if is_on_floor():
 		if direction == 0:
 			animated_sprite.play("idle")

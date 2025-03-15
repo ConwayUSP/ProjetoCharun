@@ -2,6 +2,7 @@ extends Node
 
 var score = 0
 var life = 100.0
+var imunidade = false
 
 @onready var score_label: Label = $HUD/ScoreLabel
 @onready var life_label: Label = $HUD/LifeLabel
@@ -11,6 +12,10 @@ var life = 100.0
 func add_point():
 	score += 1
 	score_label.text = "Você coletou " + str(score) + " moedas"
+	
+# Adiciona imunidade ao personagem se ele pegar skill Roll
+func add_imunity():
+	imunidade = true
 	
 func applyDamage(damage: float):
 	life -= damage
