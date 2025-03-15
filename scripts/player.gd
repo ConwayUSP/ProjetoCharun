@@ -68,9 +68,10 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("fire") and can_shoot == true:
+	# Comando para atirar, a tecla de tiro é 'J' ou 'Botão esquerdo do mouse'
+	if Input.is_action_pressed("fire") and can_shoot == true:
 		shoot()
-		fire_cooldown.start(0.1)
+		fire_cooldown.start(0.4)
 		
 # Controlar o tempo do "pulo do coyote"
 func _on_coyote_timer_timeout() -> void:
