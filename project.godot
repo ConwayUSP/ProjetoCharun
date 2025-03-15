@@ -22,6 +22,10 @@ config/windows_native_icon="res://assets/icon.ico"
 Music="*res://scenes/music.tscn"
 GameManager="*res://scenes/game_manager.tscn"
 
+[global_group]
+
+enemy=""
+
 [input]
 
 jump={

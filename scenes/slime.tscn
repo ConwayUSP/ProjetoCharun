@@ -43,7 +43,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
 size = Vector2(14, 12)
 
-[node name="Slime" type="Area2D"]
+[node name="Slime" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_nvlkd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
