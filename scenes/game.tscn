@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bdetuqx5opg44"]
 
 [ext_resource type="Texture2D" uid="uid://ccvscexiw4v2e" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_m0546"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_nfap2"]
+[ext_resource type="Script" uid="uid://dtgf1xdeq7pvf" path="res://scripts/game.gd" id="1_nfap2"]
 [ext_resource type="PackedScene" uid="uid://bg23w27w22lxr" path="res://scenes/player.tscn" id="1_r07xc"]
 [ext_resource type="PackedScene" uid="uid://cvcbytlur5al1" path="res://scenes/killzone.tscn" id="3_mlquu"]
 [ext_resource type="PackedScene" uid="uid://t1bdtlkkdd8n" path="res://scenes/platform.tscn" id="3_osiwu"]
@@ -206,8 +206,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cef4s"]
 _data = {
-"RESET": SubResource("Animation_6tei5"),
-"move": SubResource("Animation_vgmj1")
+&"RESET": SubResource("Animation_6tei5"),
+&"move": SubResource("Animation_vgmj1")
 }
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i4q85"]
@@ -272,7 +272,7 @@ position = Vector2(-113, 22)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
 libraries = {
-"": SubResource("AnimationLibrary_cef4s")
+&"": SubResource("AnimationLibrary_cef4s")
 }
 autoplay = "move"
 

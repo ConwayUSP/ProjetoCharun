@@ -1,7 +1,24 @@
-[gd_scene load_steps=26 format=3 uid="uid://bg23w27w22lxr"]
+[gd_scene load_steps=32 format=3 uid="uid://bg23w27w22lxr"]
 
 [ext_resource type="Texture2D" uid="uid://dtsmu32bn40rn" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_7xoee"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_hqe82"]
+[ext_resource type="Script" uid="uid://dsyjtvxrieaej" path="res://scripts/player.gd" id="1_hqe82"]
+[ext_resource type="Texture2D" uid="uid://e1y6dyydhelc" path="res://assets/brackeys_platformer_assets/sprites/knightAttacking.png" id="2_qhqgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v6f6"]
 atlas = ExtResource("1_7xoee")
@@ -91,6 +108,23 @@ region = Rect2(224, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3v6f6")
 }, {
 "duration": 1.0,
@@ -168,19 +202,31 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(9, 14)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_1wfnr"]
 radius = 6.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 position = Vector2(-1, -12)
-collision_layer = 2
+collision_layer = 3
 script = ExtResource("1_hqe82")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_76v08")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
+collision_priority = 2.0
+
+[node name="HitboxAttackMelee" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
+position = Vector2(11.5, 4)
+shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
@@ -194,5 +240,8 @@ wait_time = 0.09
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(7, 5)
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_shape_entered" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="body_shape_entered" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_body_shape_entered"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]

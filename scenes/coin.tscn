@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bnye5oi4pmt7m"]
 
 [ext_resource type="Texture2D" uid="uid://berjhcnky6mry" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="1_aw33r"]
-[ext_resource type="Script" path="res://scripts/coin.gd" id="1_bxdyx"]
+[ext_resource type="Script" uid="uid://dm67abw8yw5k8" path="res://scripts/coin.gd" id="1_bxdyx"]
 [ext_resource type="AudioStream" uid="uid://bxfknsem7akrh" path="res://assets/brackeys_platformer_assets/sounds/coin.wav" id="3_i4er6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pero"]
@@ -193,8 +193,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vcn5a"]
 _data = {
-"RESET": SubResource("Animation_awjao"),
-"pickup": SubResource("Animation_72cs3")
+&"RESET": SubResource("Animation_awjao"),
+&"pickup": SubResource("Animation_72cs3")
 }
 
 [node name="Coin" type="Area2D"]
