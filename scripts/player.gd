@@ -86,6 +86,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		if is_dashing:
 			velocity.x = direction * DASH_SPEED
+			velocity.y = 0
 		else:
 			velocity.x = direction * SPEED
 	else:
