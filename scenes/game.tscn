@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bdetuqx5opg44"]
+[gd_scene load_steps=23 format=4 uid="uid://bdetuqx5opg44"]
 
 [ext_resource type="Texture2D" uid="uid://ccvscexiw4v2e" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_m0546"]
 [ext_resource type="Script" uid="uid://ci47els0vikmv" path="res://scripts/game.gd" id="1_nfap2"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bmsne38davsio" path="res://scenes/slime.tscn" id="6_wyiro"]
 [ext_resource type="FontFile" uid="uid://dpxw8edp118g6" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="8_r586a"]
 [ext_resource type="PackedScene" uid="uid://dpypcgou32p63" path="res://scenes/skeleton.tscn" id="10_vtaks"]
-[ext_resource type="Script" uid="uid://bikj8gydsup7b" path="res://scripts/enemies/tormenta.gd" id="11_kvpfn"]
 [ext_resource type="Script" uid="uid://cqu5dpr2y508w" path="res://scripts/enemies/flyZone.gd" id="12_dinhu"]
-[ext_resource type="Texture2D" uid="uid://dmtdixe1uwjxd" path="res://assets/enemies/sprites/tormenta.png" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://dw6ewf886ra3s" path="res://scenes/tormenta.tscn" id="12_kvuet"]
+[ext_resource type="Texture2D" uid="uid://cha7qbi5uv2e5" path="res://assets/enemies/sprites/cerberus.png" id="13_kvuet"]
+[ext_resource type="Script" uid="uid://dxw2s0m853j2q" path="res://scripts/enemies/floorMovingBoss.gd" id="13_trtic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epy4c"]
 texture = ExtResource("1_m0546")
@@ -220,121 +221,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtaks"]
 size = Vector2(5, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(1024, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(2048, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(0, 1024, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1kice"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(1024, 1024, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5newe"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(2048, 1024, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_37s47"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(0, 2048, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bt5mj"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(2048, 1024, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1j6l"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(1024, 1024, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pl11u"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(0, 1024, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhx41"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(2048, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qnb83"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(1024, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(1024, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
-atlas = ExtResource("13_kvuet")
-region = Rect2(0, 1024, 1024, 1024)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rysoc"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_trtic"]
 animations = [{
 "frames": [{
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_kvuet")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_rysoc")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_ssvqc")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_264po")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_1kice")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_5newe")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_37s47")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_bt5mj")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_e1j6l")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_pl11u")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_bhx41")
-}, {
-"duration": 0.25,
-"texture": SubResource("AtlasTexture_qnb83")
-}],
-"loop": false,
-"name": &"attacking",
-"speed": 5.0
-}, {
-"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_trtic")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ir15t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ca42v")
+"texture": ExtResource("13_kvuet")
 }],
 "loop": true,
-"name": &"flying",
+"name": &"idling",
 "speed": 5.0
 }]
 
@@ -456,20 +350,24 @@ game_instance = NodePath("..")
 script = ExtResource("12_dinhu")
 radius = 100.0
 
-[node name="Tormenta" type="Node2D" parent="." node_paths=PackedStringArray("DETECTION_ZONE", "game_instance", "animated_sprite")]
-script = ExtResource("11_kvpfn")
+[node name="Tormenta" parent="." node_paths=PackedStringArray("DETECTION_ZONE", "game_instance") instance=ExtResource("12_kvuet")]
 DETECTION_ZONE = NodePath("../TormentaZone")
-acceleration = 1.0
+game_instance = NodePath("..")
+
+[node name="Cerberus" type="Node2D" parent="." node_paths=PackedStringArray("ray_cast_floor", "ray_cast_player", "game_instance", "animated_sprite")]
+script = ExtResource("13_trtic")
+ray_cast_floor = NodePath("RayCast2D")
+ray_cast_player = NodePath("RayCast2D")
 game_instance = NodePath("..")
 animated_sprite = NodePath("AnimatedSprite2D")
-attackDamage = 10.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tormenta"]
-scale = Vector2(0.05, 0.05)
-sprite_frames = SubResource("SpriteFrames_rysoc")
-animation = &"attacking"
-frame = 11
-frame_progress = 1.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cerberus"]
+position = Vector2(0, -14)
+scale = Vector2(0.13, 0.13)
+sprite_frames = SubResource("SpriteFrames_trtic")
+animation = &"idling"
+frame_progress = 0.0690536
+metadata/_edit_group_ = true
 
-[connection signal="animation_finished" from="Tormenta/AnimatedSprite2D" to="Tormenta" method="onAnimationFinished"]
-[connection signal="animation_looped" from="Tormenta/AnimatedSprite2D" to="Tormenta" method="_on_animated_sprite_2d_animation_looped"]
+[node name="RayCast2D" type="RayCast2D" parent="Cerberus"]
+target_position = Vector2(0, 9)

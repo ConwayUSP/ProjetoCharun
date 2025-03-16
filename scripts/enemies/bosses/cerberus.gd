@@ -1,0 +1,2 @@
+extends FloorMovingBoss
+class_name Cerberus

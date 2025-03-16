@@ -14,8 +14,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		setAnimation("flying")
 		
-	print(lastHit)
-		
 	if(lastHit > 0):
 		lastHit -= delta
 	else:
