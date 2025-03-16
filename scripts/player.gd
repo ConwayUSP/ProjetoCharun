@@ -73,13 +73,16 @@ func _physics_process(delta: float) -> void:
 	# Reproduzir a animação
 	if GameManager.imunidade == true:
 		sprite.visible = true
-	if is_on_floor():
-		if direction == 0:
-			animated_sprite.play("idle")
-		else:
-			animated_sprite.play("run")
+	if is_dashing:
+		animated_sprite.play("roll")
 	else:
-		animated_sprite.play("jump")
+		if is_on_floor():
+			if direction == 0:
+				animated_sprite.play("idle")
+			else:
+				animated_sprite.play("run")
+		else:
+			animated_sprite.play("jump")
 	
 	if is_dashing:
 		direction = getPlayerLastDirection()
