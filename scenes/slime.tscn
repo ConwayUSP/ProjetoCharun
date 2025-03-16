@@ -119,9 +119,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
 size = Vector2(14, 12)
 
-[node name="Slime" type="Area2D" node_paths=PackedStringArray("ray_cast_floor") groups=["enemy"]]
+[node name="Slime" type="Area2D" node_paths=PackedStringArray("ray_cast_floor", "animated_sprite") groups=["enemy"]]
 script = ExtResource("1_nvlkd")
 ray_cast_floor = NodePath("RayCastFloor")
+animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)

@@ -5,7 +5,8 @@ var targetDirection = Vector2(0,0);
 @export var SPEED = 10;
 @export var health = 100;
 @export var game_instance: Game;
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@export var animated_sprite: AnimatedSprite2D
+@export var attackDamage:float = 30;
 var hitTime: float = 0;
 
 var animationPlaying = false
@@ -50,7 +51,7 @@ func completeAttack() -> void:
 	if(isDead()): return;
 	print(game_instance.player.position.distance_to(position))
 	if(game_instance.player.position.distance_to(position) < 15):
-		causePlayerDamage(30)
+		causePlayerDamage(attackDamage)
 	
 func stopAttack() -> void:
 	if(isDead()): return;
