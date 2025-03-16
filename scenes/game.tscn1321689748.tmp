@@ -302,6 +302,8 @@ shape = SubResource("WorldBoundaryShape2D_i4q85")
 
 [node name="Slime" parent="." instance=ExtResource("6_wyiro")]
 position = Vector2(136, 34)
+SPEED = null
+health = null
 
 [node name="Label" type="Label" parent="."]
 offset_left = -95.0
@@ -326,7 +328,6 @@ shape = SubResource("RectangleShape2D_vtaks")
 position = Vector2(7.5, -3.5)
 shape = SubResource("RectangleShape2D_vtaks")
 
-[node name="Skeleton" parent="." node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+[node name="Skeleton" parent="." instance=ExtResource("10_vtaks")]
 position = Vector2(23, 17)
-SPEED = 20
-game_instance = NodePath("..")
+SPEED = 19

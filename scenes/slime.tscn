@@ -1,8 +1,36 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmsne38davsio"]
+[gd_scene load_steps=17 format=3 uid="uid://bmsne38davsio"]
 
 [ext_resource type="Texture2D" uid="uid://vmuwgol3hog4" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_7b77j"]
 [ext_resource type="Script" uid="uid://djx86ys2t6h1s" path="res://scripts/enemies/slime.gd" id="1_nvlkd"]
 [ext_resource type="Script" uid="uid://ce8m4gohaj6o8" path="res://scripts/enemies/collisions/collision_box.gd" id="3_n6pvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2npkn"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd6lc"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gstla"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5wyi"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l8pv"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ni8j"]
 atlas = ExtResource("1_7b77j")
@@ -24,6 +52,37 @@ region = Rect2(72, 24, 24, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_n6pvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjw23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2npkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd6lc")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gstla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5wyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l8pv")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0ni8j")
 }, {
 "duration": 1.0,
@@ -36,26 +95,51 @@ animations = [{
 "texture": SubResource("AtlasTexture_bsc3e")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idling",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ni8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu564")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mkll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsc3e")
+}],
+"loop": true,
+"name": &"walking",
 "speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
 size = Vector2(14, 12)
 
-[node name="Slime" type="Area2D" groups=["enemy"]]
+[node name="Slime" type="Area2D" node_paths=PackedStringArray("ray_cast_floor") groups=["enemy"]]
 script = ExtResource("1_nvlkd")
+ray_cast_floor = NodePath("RayCastFloor")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_3jbd0")
-autoplay = "default"
-frame_progress = 0.653382
+animation = &"hit"
+autoplay = "walking"
+frame = 2
+frame_progress = 1.0
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
 rotation = -1.5708
 target_position = Vector2(-4.76837e-07, 7)
+
+[node name="RayCastFloor" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+rotation = -3.14159
+target_position = Vector2(-4.33922e-05, -5.99998)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
@@ -72,4 +156,6 @@ damage = 9999.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_n6pvg")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="onAnimationFinished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
