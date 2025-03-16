@@ -203,5 +203,13 @@ wait_time = 0.09
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(7, 5)
 
+[node name="dashTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dashCooldown" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]
+[connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]

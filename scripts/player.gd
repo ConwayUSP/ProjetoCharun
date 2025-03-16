@@ -14,8 +14,11 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 const VELOCIDADE_LIM = 300.0  
 const DANO_MULTI = 0.5   
+const DASH_SPEED = 450.0
 var can_jump = false
 var can_shoot = true
+var can_dash = true
+var is_dashing = false
  
 
 var velocidade_queda = 0.0
@@ -44,6 +47,14 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and can_jump == true:
 		velocity.y = JUMP_VELOCITY
 		can_jump = false
+		
+	# Lidar com o dash
+	if Input.is_action_just_pressed("dash") and can_dash:
+		is_dashing = true
+		can_dash = false
+		$dashTimer.start()
+		$dashCooldown.start()
+		print("dash!")
 
 	# Obter a direção de movimento: -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")
@@ -73,7 +84,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Aplicar o movimento
 	if direction:
-		velocity.x = direction * SPEED
+		if is_dashing:
+			velocity.x = direction * DASH_SPEED
+		else:
+			velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
@@ -87,7 +101,7 @@ func _physics_process(delta: float) -> void:
 # Controlar o tempo do "pulo do coyote"
 func _on_coyote_timer_timeout() -> void:
 	can_jump = false
-
+	
 # Função para o personagem atirar
 func shoot():
 	can_shoot = false
@@ -103,3 +117,16 @@ func shoot():
 # Controlar o tempo de cooldown do tiro
 func _on_fire_cooldown_timeout() -> void:
 	can_shoot = true
+
+# Função para realizar o dash
+func dash():
+	velocity
+
+# Ao finalizar o dash
+func _on_dash_timer_timeout() -> void:
+	is_dashing = false
+
+# Ao finalizar o cooldown do dash
+func _on_dash_cooldown_timeout() -> void:
+	can_dash = true
+	print("Dash saiu de cooldown")
