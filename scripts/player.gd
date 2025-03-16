@@ -19,7 +19,6 @@ var can_jump = false
 var can_shoot = true
 var can_dash = true
 var is_dashing = false
- 
 
 var velocidade_queda = 0.0
 var  posicao_inicial = Vector2.ZERO  # Posição inicial
@@ -82,15 +81,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite.play("jump")
 	
-	# Aplicar o movimento
-	if direction:
-		if is_dashing:
-			velocity.x = direction * DASH_SPEED
-			velocity.y = 0
-		else:
-			velocity.x = direction * SPEED
+	if is_dashing:
+		direction = getPlayerLastDirection()
+		velocity.x = direction * DASH_SPEED
+		velocity.y = 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		# Aplicar o movimento padrão
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	move_and_slide()
 	
@@ -119,10 +119,6 @@ func shoot():
 func _on_fire_cooldown_timeout() -> void:
 	can_shoot = true
 
-# Função para realizar o dash
-func dash():
-	velocity
-
 # Ao finalizar o dash
 func _on_dash_timer_timeout() -> void:
 	is_dashing = false
@@ -131,3 +127,8 @@ func _on_dash_timer_timeout() -> void:
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
 	print("Dash saiu de cooldown")
+
+# Função para decidir a direção do dash, parece que tá ao contrário mas o importante é que funciona.	
+func getPlayerLastDirection():
+	if (sprite.position.x > 0): return -1
+	return 1
