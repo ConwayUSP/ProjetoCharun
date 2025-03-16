@@ -14,6 +14,6 @@ func _process(delta: float) -> void:
 
 # Função que mata inimigos
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("enemy"):
-		area.queue_free()
+	if area is EnemyCollisionBox:
+		area.onPlayerCauseDamage(10)
 		queue_free()

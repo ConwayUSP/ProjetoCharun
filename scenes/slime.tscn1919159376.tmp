@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmsne38davsio"]
+
+[ext_resource type="Texture2D" uid="uid://vmuwgol3hog4" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_7b77j"]
+[ext_resource type="Script" uid="uid://djx86ys2t6h1s" path="res://scripts/enemies/slime.gd" id="1_nvlkd"]
+[ext_resource type="Script" uid="uid://ce8m4gohaj6o8" path="res://scripts/enemies/collisions/collision_box.gd" id="3_n6pvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ni8j"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu564"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mkll"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsc3e"]
+atlas = ExtResource("1_7b77j")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jbd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ni8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu564")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mkll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsc3e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr4jr"]
+size = Vector2(14, 15)
+
+[node name="Slime" type="Area2D" groups=["enemy"]]
+script = ExtResource("1_nvlkd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_3jbd0")
+autoplay = "default"
+frame_progress = 0.653382
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+rotation = -1.5708
+target_position = Vector2(-4.76837e-07, 7)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+rotation = 1.5708
+target_position = Vector2(4.76837e-07, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_hr4jr")
+script = ExtResource("3_n6pvg")
+metadata/damage = 9999.0
