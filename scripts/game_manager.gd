@@ -6,7 +6,6 @@ var imunidade = false
 
 @onready var score_label: Label = $HUD/ScoreLabel
 @onready var life_label: Label = $HUD/LifeLabel
-
 @onready var timer: Timer = $Timer
 
 func add_point():

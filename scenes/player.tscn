@@ -1,8 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://bg23w27w22lxr"]
+[gd_scene load_steps=35 format=3 uid="uid://bg23w27w22lxr"]
 
 [ext_resource type="Texture2D" uid="uid://dtsmu32bn40rn" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_7xoee"]
 [ext_resource type="Script" uid="uid://dkxqligkvgmtj" path="res://scripts/player.gd" id="1_hqe82"]
 [ext_resource type="Texture2D" uid="uid://dpq8nrnquaer4" path="res://assets/Holy VFX 01 Impact2.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://du84xmpxjcics" path="res://efeitos_sonoros/pulo.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://dlijd2lq0pknl" path="res://efeitos_sonoros/tiro.wav" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://b43l3lmtknnr6" path="res://efeitos_sonoros/dash.wav" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://cdldexabxgqsx" path="res://efeitos_sonoros/morte.wav" id="7_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v6f6"]
 atlas = ExtResource("1_7xoee")
@@ -242,6 +246,19 @@ wait_time = 0.2
 
 [node name="dashCooldown" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="pulo_som" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dqkch")
+volume_db = -2.971
+
+[node name="tiro_som" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")
+
+[node name="dash_som" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tuyoq")
+
+[node name="morte_som" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fjrip")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]

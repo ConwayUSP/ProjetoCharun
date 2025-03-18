@@ -121,11 +121,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Tormenta" type="Node2D" node_paths=PackedStringArray("DETECTION_ZONE", "game_instance", "animated_sprite")]
+[node name="Tormenta" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_ymb8m")
-DETECTION_ZONE = NodePath("")
 acceleration = 1.0
-game_instance = NodePath("")
 animated_sprite = NodePath("AnimatedSprite2D")
 attackDamage = 10.0
 

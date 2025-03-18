@@ -7,6 +7,9 @@ class_name Player
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var fire_cooldown: Timer = $FireCooldown
 @onready var marker_2d: Marker2D = $Marker2D
+@onready var pulo: AudioStreamPlayer2D = $pulo_som
+@onready var tiro: AudioStreamPlayer2D = $tiro_som
+@onready var dash: AudioStreamPlayer2D = $dash_som
 
 const FIRE = preload("res://scenes/fire.tscn")
 
@@ -44,12 +47,16 @@ func _physics_process(delta: float) -> void:
 
 	# Lidar com o pulo
 	if Input.is_action_just_pressed("jump") and can_jump == true:
+		if pulo != null:
+			pulo.play()
 		velocity.y = JUMP_VELOCITY
 		can_jump = false
 		
 	# Lidar com o dash
 	if Input.is_action_just_pressed("dash") and can_dash:
 		is_dashing = true
+		if dash != null:
+			dash.play()
 		can_dash = false
 		$dashTimer.start()
 		$dashCooldown.start()
@@ -112,7 +119,8 @@ func shoot():
 	var bullet = FIRE.instantiate()
 	owner.add_child(bullet)
 	bullet.position = marker_2d.global_position
-	
+	if tiro != null:
+		tiro.play()
 	if animated_sprite.flip_h == false:
 		bullet.scale = Vector2(0.25, 0.25)
 	else:
@@ -121,6 +129,7 @@ func shoot():
 # Controlar o tempo de cooldown do tiro
 func _on_fire_cooldown_timeout() -> void:
 	can_shoot = true
+	
 
 # Ao finalizar o dash
 func _on_dash_timer_timeout() -> void:
