@@ -10,6 +10,7 @@ class_name Player
 @onready var pulo: AudioStreamPlayer2D = $pulo_som
 @onready var tiro: AudioStreamPlayer2D = $tiro_som
 @onready var dash: AudioStreamPlayer2D = $dash_som
+@onready var hitbox_attack : CollisionShape2D = $AnimatedSprite2D/Area2D/CollisionShape2D
 
 const FIRE = preload("res://scenes/fire.tscn")
 
@@ -22,6 +23,7 @@ var can_jump = false
 var can_shoot = true
 var can_dash = true
 var is_dashing = false
+var is_attacking = false
 
 var velocidade_queda = 0.0
 var  posicao_inicial = Vector2.ZERO  # Posição inicial
@@ -67,12 +69,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Virar o Sprite dependendo da direção
 	if direction > 0:
-		animated_sprite.flip_h = false
 		sprite.flip_h = false
 		sprite.position.x = -9
 		sprite.rotate(0.08)
 	elif direction < 0:
-		animated_sprite.flip_h = true
 		sprite.flip_h = true
 		sprite.position.x = 9
 		sprite.rotate(-0.08)
@@ -82,6 +82,8 @@ func _physics_process(delta: float) -> void:
 		sprite.visible = true
 	if is_dashing:
 		animated_sprite.play("roll")
+	elif is_attacking:
+		animated_sprite.play("attack")
 	else:
 		if is_on_floor():
 			if direction == 0:
@@ -99,10 +101,19 @@ func _physics_process(delta: float) -> void:
 		# Aplicar o movimento padrão
 		if direction:
 			velocity.x = direction * SPEED
+			animated_sprite.scale.x = direction
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	move_and_slide()
+	
+		# ataque simples, a tecla eh H
+	if   Input.is_action_just_pressed("attack") and !is_attacking:
+		is_attacking = true
+	if is_attacking:
+		hitbox_attack.disabled = false
+	else:
+		hitbox_attack.disabled = true
 	
 	# Comando para atirar, a tecla de tiro é 'J' ou 'Botão esquerdo do mouse'
 	if Input.is_action_pressed("fire") and can_shoot == true:
@@ -121,7 +132,7 @@ func shoot():
 	bullet.position = marker_2d.global_position
 	if tiro != null:
 		tiro.play()
-	if animated_sprite.flip_h == false:
+	if animated_sprite.scale.x > 0:
 		bullet.scale = Vector2(0.25, 0.25)
 	else:
 		bullet.scale = Vector2(-0.25, 0.25)
@@ -144,3 +155,14 @@ func _on_dash_cooldown_timeout() -> void:
 func getPlayerLastDirection():
 	if (sprite.position.x > 0): return -1
 	return 1
+
+
+# funcao que termina com a animacao de ataque
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite.animation == "attack":
+		is_attacking = false
+
+#verifica se oq esta colidindo com o ataque eh um inimigo ou n´
+func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area is EnemyCollisionBox:
+		area.onPlayerCauseDamage(10)
