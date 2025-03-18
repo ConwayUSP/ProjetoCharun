@@ -1,0 +1,2 @@
+extends FloorMovingEnemy
+class_name FloorMovingBoss
