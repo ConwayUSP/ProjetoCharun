@@ -14,9 +14,11 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 const VELOCIDADE_LIM = 300.0  
 const DANO_MULTI = 0.5   
+const DASH_SPEED = 450.0
 var can_jump = false
 var can_shoot = true
- 
+var can_dash = true
+var is_dashing = false
 
 var velocidade_queda = 0.0
 var  posicao_inicial = Vector2.ZERO  # Posição inicial
@@ -44,6 +46,14 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and can_jump == true:
 		velocity.y = JUMP_VELOCITY
 		can_jump = false
+		
+	# Lidar com o dash
+	if Input.is_action_just_pressed("dash") and can_dash:
+		is_dashing = true
+		can_dash = false
+		$dashTimer.start()
+		$dashCooldown.start()
+		print("dash!")
 
 	# Obter a direção de movimento: -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")
@@ -63,19 +73,27 @@ func _physics_process(delta: float) -> void:
 	# Reproduzir a animação
 	if GameManager.imunidade == true:
 		sprite.visible = true
-	if is_on_floor():
-		if direction == 0:
-			animated_sprite.play("idle")
+	if is_dashing:
+		animated_sprite.play("roll")
+	else:
+		if is_on_floor():
+			if direction == 0:
+				animated_sprite.play("idle")
+			else:
+				animated_sprite.play("run")
 		else:
-			animated_sprite.play("run")
-	else:
-		animated_sprite.play("jump")
+			animated_sprite.play("jump")
 	
-	# Aplicar o movimento
-	if direction:
-		velocity.x = direction * SPEED
+	if is_dashing:
+		direction = getPlayerLastDirection()
+		velocity.x = direction * DASH_SPEED
+		velocity.y = 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		# Aplicar o movimento padrão
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	move_and_slide()
 	
@@ -87,7 +105,7 @@ func _physics_process(delta: float) -> void:
 # Controlar o tempo do "pulo do coyote"
 func _on_coyote_timer_timeout() -> void:
 	can_jump = false
-
+	
 # Função para o personagem atirar
 func shoot():
 	can_shoot = false
@@ -103,3 +121,17 @@ func shoot():
 # Controlar o tempo de cooldown do tiro
 func _on_fire_cooldown_timeout() -> void:
 	can_shoot = true
+
+# Ao finalizar o dash
+func _on_dash_timer_timeout() -> void:
+	is_dashing = false
+
+# Ao finalizar o cooldown do dash
+func _on_dash_cooldown_timeout() -> void:
+	can_dash = true
+	print("Dash saiu de cooldown")
+
+# Função para decidir a direção do dash, parece que tá ao contrário mas o importante é que funciona.	
+func getPlayerLastDirection():
+	if (sprite.position.x > 0): return -1
+	return 1
