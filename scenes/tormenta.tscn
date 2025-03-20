@@ -1,0 +1,138 @@
+[gd_scene load_steps=19 format=3 uid="uid://dw6ewf886ra3s"]
+
+[ext_resource type="Script" uid="uid://bikj8gydsup7b" path="res://scripts/enemies/tormenta.gd" id="1_ymb8m"]
+[ext_resource type="Texture2D" uid="uid://dmtdixe1uwjxd" path="res://assets/enemies/sprites/tormenta.png" id="2_xafop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
+atlas = ExtResource("2_xafop")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
+atlas = ExtResource("2_xafop")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
+atlas = ExtResource("2_xafop")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
+atlas = ExtResource("2_xafop")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kice"]
+atlas = ExtResource("2_xafop")
+region = Rect2(1024, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5newe"]
+atlas = ExtResource("2_xafop")
+region = Rect2(2048, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37s47"]
+atlas = ExtResource("2_xafop")
+region = Rect2(0, 2048, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt5mj"]
+atlas = ExtResource("2_xafop")
+region = Rect2(2048, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1j6l"]
+atlas = ExtResource("2_xafop")
+region = Rect2(1024, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl11u"]
+atlas = ExtResource("2_xafop")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhx41"]
+atlas = ExtResource("2_xafop")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnb83"]
+atlas = ExtResource("2_xafop")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+atlas = ExtResource("2_xafop")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+atlas = ExtResource("2_xafop")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
+atlas = ExtResource("2_xafop")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rysoc"]
+animations = [{
+"frames": [{
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_kvuet")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_rysoc")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_ssvqc")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_264po")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_1kice")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_5newe")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_37s47")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_bt5mj")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_e1j6l")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_pl11u")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_bhx41")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_qnb83")
+}],
+"loop": false,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trtic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir15t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
+
+[node name="Tormenta" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_ymb8m")
+acceleration = 1.0
+animated_sprite = NodePath("AnimatedSprite2D")
+attackDamage = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_rysoc")
+animation = &"attacking"
+frame = 11
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="onAnimationFinished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

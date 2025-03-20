@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmsne38davsio"]
+[gd_scene load_steps=18 format=3 uid="uid://bmsne38davsio"]
 
 [ext_resource type="Texture2D" uid="uid://vmuwgol3hog4" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_7b77j"]
 [ext_resource type="Script" uid="uid://djx86ys2t6h1s" path="res://scripts/enemies/slime.gd" id="1_nvlkd"]
 [ext_resource type="Script" uid="uid://ce8m4gohaj6o8" path="res://scripts/enemies/collisions/collision_box.gd" id="3_n6pvg"]
+[ext_resource type="AudioStream" uid="uid://dh62sxdj7g4nr" path="res://efeitos_sonoros/inimigoAtingido.wav" id="4_pjw23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
 atlas = ExtResource("1_7b77j")
@@ -119,9 +120,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
 size = Vector2(14, 12)
 
-[node name="Slime" type="Area2D" node_paths=PackedStringArray("ray_cast_floor") groups=["enemy"]]
+[node name="Slime" type="Area2D" node_paths=PackedStringArray("ray_cast_floor", "animated_sprite") groups=["enemy"]]
+position = Vector2(136, 34)
 script = ExtResource("1_nvlkd")
 ray_cast_floor = NodePath("RayCastFloor")
+animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
@@ -155,6 +158,9 @@ damage = 9999.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_n6pvg")
+
+[node name="inimigo_atingido" type="AudioStreamPlayer2D" parent="Area2D"]
+stream = ExtResource("4_pjw23")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="onAnimationFinished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

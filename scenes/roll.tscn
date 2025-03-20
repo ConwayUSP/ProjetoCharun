@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://wrtooggxrcg"]
+[gd_scene load_steps=14 format=3 uid="uid://wrtooggxrcg"]
 
-[ext_resource type="Script" path="res://scripts/roll.gd" id="1_mdf18"]
+[ext_resource type="Script" uid="uid://csrebyll4fq3g" path="res://scripts/roll.gd" id="1_mdf18"]
 [ext_resource type="Texture2D" uid="uid://dtsmu32bn40rn" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_tp1g5"]
 [ext_resource type="AudioStream" uid="uid://d2n3oekemj4t5" path="res://assets/brackeys_platformer_assets/sounds/explosion.wav" id="3_trshq"]
+[ext_resource type="AudioStream" uid="uid://0b7jyjojis7a" path="res://efeitos_sonoros/powerUp.wav" id="4_gfyf2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tp1g5"]
 atlas = ExtResource("1_tp1g5")
@@ -165,5 +166,8 @@ bus = &"SFX"
 libraries = {
 &"": SubResource("AnimationLibrary_vcn5a")
 }
+
+[node name="powerUp_som" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gfyf2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
