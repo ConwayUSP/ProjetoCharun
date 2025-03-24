@@ -8,6 +8,7 @@ var targetDirection = Vector2(0,0);
 @export var animated_sprite: AnimatedSprite2D
 @export var attackDamage:float = 30;
 var hitTime: float = 0;
+const COIN = preload("res://scenes/coin.tscn")
 
 var animationPlaying = false
 
@@ -71,6 +72,11 @@ func applyDamage(damage: float) -> void:
 	
 func die() -> void:
 	print("cabo pro bixin")
+	
+	# Função de drop de moeda
+	var drop = COIN.instantiate()
+	owner.add_child(drop)
+	drop.position = animated_sprite.global_position
 	setAnimation("death", true)
 
 func verifyDeath() -> void:

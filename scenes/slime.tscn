@@ -121,7 +121,6 @@ animations = [{
 size = Vector2(14, 12)
 
 [node name="Slime" type="Area2D" node_paths=PackedStringArray("ray_cast_floor", "animated_sprite") groups=["enemy"]]
-position = Vector2(136, 34)
 script = ExtResource("1_nvlkd")
 ray_cast_floor = NodePath("RayCastFloor")
 animated_sprite = NodePath("AnimatedSprite2D")

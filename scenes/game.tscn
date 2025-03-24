@@ -319,6 +319,7 @@ position = Vector2(0, 150)
 shape = SubResource("WorldBoundaryShape2D_i4q85")
 
 [node name="Slime" parent="." instance=ExtResource("6_wyiro")]
+position = Vector2(137, 32)
 
 [node name="Label" type="Label" parent="."]
 offset_left = -95.0
