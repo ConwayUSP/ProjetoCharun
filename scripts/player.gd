@@ -3,14 +3,14 @@ class_name Player
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape_2d: CollisionShape2D = $playerHitbox
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var fire_cooldown: Timer = $FireCooldown
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var pulo: AudioStreamPlayer2D = $pulo_som
 @onready var tiro: AudioStreamPlayer2D = $tiro_som
 @onready var dash: AudioStreamPlayer2D = $dash_som
-@onready var hitbox_attack : CollisionShape2D = $AnimatedSprite2D/Area2D/CollisionShape2D
+@onready var hitbox_attack : CollisionShape2D = $AnimatedSprite2D/playerAttack/CollisionShape2D
 
 const FIRE = preload("res://scenes/fire.tscn")
 
