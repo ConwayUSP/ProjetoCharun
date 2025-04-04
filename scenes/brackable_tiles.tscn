@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://co32fnpj0l8mi"]
+[gd_scene load_steps=7 format=3 uid="uid://co32fnpj0l8mi"]
 
 [ext_resource type="Script" uid="uid://cm63i00rx0usy" path="res://breakCollision.gd" id="1_1jrls"]
 [ext_resource type="Texture2D" uid="uid://ccvscexiw4v2e" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_rbtfv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xylj7"]
-size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hat5o"]
 atlas = ExtResource("2_rbtfv")
@@ -21,15 +18,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BrackableTiles" type="Area2D"]
-script = ExtResource("1_1jrls")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xylj7"]
+size = Vector2(16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_xylj7")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jrls"]
+size = Vector2(16, 15.5)
+
+[node name="BrackableTiles" type="Area2D"]
+collision_layer = 7
+collision_mask = 3
+script = ExtResource("1_1jrls")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_1b5gi")
+
+[node name="ColisaoFisica" type="RigidBody2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="ColisaoFisica"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_xylj7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.75)
+shape = SubResource("RectangleShape2D_1jrls")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

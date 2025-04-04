@@ -156,7 +156,6 @@ func getPlayerLastDirection():
 	if (sprite.position.x > 0): return -1
 	return 1
 
-
 # funcao que termina com a animacao de ataque
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack":
