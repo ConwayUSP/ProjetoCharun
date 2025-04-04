@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bdetuqx5opg44"]
+[gd_scene load_steps=27 format=4 uid="uid://bdetuqx5opg44"]
 
 [ext_resource type="Texture2D" uid="uid://ccvscexiw4v2e" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_m0546"]
 [ext_resource type="Script" uid="uid://ci47els0vikmv" path="res://scripts/game.gd" id="1_nfap2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://wrtooggxrcg" path="res://scenes/roll.tscn" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bnye5oi4pmt7m" path="res://scenes/coin.tscn" id="4_7a35y"]
 [ext_resource type="PackedScene" uid="uid://bmsne38davsio" path="res://scenes/slime.tscn" id="6_wyiro"]
+[ext_resource type="PackedScene" uid="uid://bkbbo25rex202" path="res://area_gelo.tscn" id="7_rysoc"]
 [ext_resource type="FontFile" uid="uid://dpxw8edp118g6" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="8_r586a"]
 [ext_resource type="PackedScene" uid="uid://dpypcgou32p63" path="res://scenes/skeleton.tscn" id="10_vtaks"]
 [ext_resource type="Script" uid="uid://cqu5dpr2y508w" path="res://scripts/enemies/flyZone.gd" id="12_dinhu"]
@@ -1366,11 +1367,11 @@ position = Vector2(-53, 5)
 
 [node name="Player" parent="." instance=ExtResource("1_r07xc")]
 unique_name_in_owner = true
-position = Vector2(1754, 516)
+position = Vector2(1560, 467)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -10)
-zoom = Vector2(4, 4)
+zoom = Vector2(2.5, 2.5)
 limit_bottom = 100000
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -1407,6 +1408,9 @@ position = Vector2(-312, -70)
 position = Vector2(-296, -70)
 
 [node name="Platforms" type="Node" parent="."]
+
+[node name="AreaGelo" parent="Platforms" instance=ExtResource("7_rysoc")]
+position = Vector2(1366, 441)
 
 [node name="Platform" parent="Platforms" instance=ExtResource("3_osiwu")]
 position = Vector2(87, -14)
@@ -1491,3 +1495,6 @@ position = Vector2(881, 501)
 
 [node name="Poção2" parent="Node" instance=ExtResource("16_ca42v")]
 position = Vector2(2593, 535)
+
+[connection signal="body_entered" from="Platforms/AreaGelo" to="Player" method="_on_area_gelo_body_entered"]
+[connection signal="body_exited" from="Platforms/AreaGelo" to="Player" method="_on_area_gelo_body_exited"]
