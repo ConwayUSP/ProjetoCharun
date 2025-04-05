@@ -16,8 +16,8 @@ const FIRE = preload("res://scenes/fire.tscn")
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
-const VELOCIDADE_LIM = 300.0  
-const DANO_MULTI = 0.5   
+const VELOCIDADE_LIM = 430.0  
+const DANO_MULTI = 0.25   
 const DASH_SPEED = 450.0
 var can_jump = false
 var can_shoot = true
@@ -156,7 +156,6 @@ func getPlayerLastDirection():
 	if (sprite.position.x > 0): return -1
 	return 1
 
-# funcao que termina com a animacao de ataque
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack":
 		is_attacking = false
@@ -165,3 +164,4 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area is EnemyCollisionBox:
 		area.onPlayerCauseDamage(10)
+		
