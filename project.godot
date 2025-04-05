@@ -25,6 +25,7 @@ GameManager="*res://scenes/game_manager.tscn"
 [global_group]
 
 enemy=""
+playerAttack=""
 
 [input]
 

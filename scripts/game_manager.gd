@@ -2,7 +2,6 @@ extends Node
 
 var score = 0
 var life = 100.0
-var max_life = 100.0
 var imunidade = false
 
 @onready var score_label: Label = $HUD/ScoreLabel
@@ -40,9 +39,3 @@ func _on_timer_timeout() -> void:
 	Engine.time_scale = 1
 	get_tree().reload_current_scene()
 	print("a")
-	
-func heal(amount: float):
-	life += amount
-	life = min(life, max_life)  # Garante que não ultrapasse o máximo
-	life_label.text = "Você possui " + str(life) + " de vida"
-	print("Vida recuperada! Vida atual: ", life)
