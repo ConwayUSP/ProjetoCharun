@@ -92,13 +92,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * DASH_SPEED
 		velocity.y = 0
 	elif not is_on_floor(): #DURANTE PULO OU QUEDA
-		if direction == 0:
-			#Mantém a inércia do pulo
-			velocity.x += direction * SPEED * delta
-			velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
-		else:
-			velocity.x = direction * SPEED
-			animated_sprite.scale.x = direction
+		#Não teremos inércia no ar por questão de jogabilidade
+		if direction != 0: animated_sprite.scale.x = direction
+		velocity.x = direction * SPEED
 		velocity.y += get_gravity().y * delta
 		velocidade_queda = velocity.y
 	else: #NO CHÃO
