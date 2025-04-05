@@ -3,21 +3,21 @@ class_name Player
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape_2d: CollisionShape2D = $playerHitbox
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var fire_cooldown: Timer = $FireCooldown
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var pulo: AudioStreamPlayer2D = $pulo_som
 @onready var tiro: AudioStreamPlayer2D = $tiro_som
 @onready var dash: AudioStreamPlayer2D = $dash_som
-@onready var hitbox_attack : CollisionShape2D = $AnimatedSprite2D/Area2D/CollisionShape2D
+@onready var hitbox_attack : CollisionShape2D = $AnimatedSprite2D/playerAttack/CollisionShape2D
 
 const FIRE = preload("res://scenes/fire.tscn")
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
-const VELOCIDADE_LIM = 430.0  
-const DANO_MULTI = 0.25   
+const VELOCIDADE_LIM = 300.0  
+const DANO_MULTI = 0.5   
 const DASH_SPEED = 450.0
 var can_jump = false
 var can_shoot = true
@@ -157,7 +157,7 @@ func getPlayerLastDirection():
 	return 1
 
 
-# funcao que termina com a animacao de ataqueGameManager.life = min(GameManager.life, GameManager.max_life)
+# funcao que termina com a animacao de ataque
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack":
 		is_attacking = false
@@ -166,4 +166,3 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area is EnemyCollisionBox:
 		area.onPlayerCauseDamage(10)
-		

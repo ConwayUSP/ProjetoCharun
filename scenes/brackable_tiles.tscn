@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://co32fnpj0l8mi"]
+
+[ext_resource type="Texture2D" uid="uid://ccvscexiw4v2e" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_rbtfv"]
+
+[sub_resource type="GDScript" id="GDScript_rkqp6"]
+script/source = "extends Area2D
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group(\"playerAttack\") : 
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xylj7"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hat5o"]
+atlas = ExtResource("2_rbtfv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1b5gi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hat5o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jrls"]
+size = Vector2(16, 16)
+
+[node name="BrackableTiles" type="Area2D"]
+script = SubResource("GDScript_rkqp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_xylj7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_1b5gi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_1jrls")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
