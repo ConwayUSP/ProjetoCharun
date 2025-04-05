@@ -16,45 +16,36 @@ const FIRE = preload("res://scenes/fire.tscn")
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
-const VELOCIDADE_LIM = 300.0  
-const DANO_MULTI = 0.5   
-const DASH_SPEED = 450.0
+const VELOCIDADE_LIM = 430.0  
+const DANO_MULTI = 0.25   
+const DASH_SPEED = 400.0
+const NORMAL_FRICTION = 500
+const ICY_FRICTION = 50
+const AIR_FRICTION = 0.005 #Entre 0 e 1, mas precisa ser bem baixo
+var current_friction = NORMAL_FRICTION
+
 var can_jump = false
 var can_shoot = true
 var can_dash = true
 var is_dashing = false
 var is_attacking = false
+var is_on_ice = false
 
 var velocidade_queda = 0.0
-var  posicao_inicial = Vector2.ZERO  # Posição inicial
+var posicao_inicial = Vector2.ZERO  # Posição inicial
 
 func _ready() -> void:
 	posicao_inicial = position
 
 func _physics_process(delta: float) -> void:
-	# Adicionar gravidade.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		velocidade_queda = velocity.y
-	else:
-		coyote_timer.start(0.09)
-		can_jump = true
-		
-		# Verificar se o personagem sofreu dano de queda
-		if velocidade_queda > VELOCIDADE_LIM:
-			if !GameManager.imunidade:
-				var dano_queda = (velocidade_queda - VELOCIDADE_LIM) * DANO_MULTI
-				GameManager.applyDamage(snappedf(dano_queda,0.01))
-		velocidade_queda = 0.0  
-
-	# Lidar com o pulo
+	# Input do PULO
 	if Input.is_action_just_pressed("jump") and can_jump == true:
 		if pulo != null:
 			pulo.play()
 		velocity.y = JUMP_VELOCITY
 		can_jump = false
 		
-	# Lidar com o dash
+	# Input do DASH
 	if Input.is_action_just_pressed("dash") and can_dash:
 		is_dashing = true
 		if dash != null:
@@ -92,19 +83,43 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("run")
 		else:
 			animated_sprite.play("jump")
-	
+		
+	#Calcular física do movimento do player
+	#Primeiro confere o dash, para sobrescrever a inércia caso necessário
 	if is_dashing:
 		direction = getPlayerLastDirection()
 		velocity.x = direction * DASH_SPEED
 		velocity.y = 0
-	else:
-		# Aplicar o movimento padrão
-		if direction:
+	elif not is_on_floor(): #DURANTE PULO OU QUEDA
+		if direction == 0:
+			#Mantém a inércia do pulo
+			velocity.x += direction * SPEED * delta
+			velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
+		else:
+			velocity.x = direction * SPEED
+			animated_sprite.scale.x = direction
+		velocity.y += get_gravity().y * delta
+		velocidade_queda = velocity.y
+	else: #NO CHÃO
+		#Ajustar a fricção de acordo com terreno
+		current_friction = ICY_FRICTION if is_on_ice else NORMAL_FRICTION
+		# Aplicar o movimento horizontal
+		if direction != 0:
 			velocity.x = direction * SPEED
 			animated_sprite.scale.x = direction
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, current_friction * delta)
 		
+		coyote_timer.start(0.09)
+		can_jump = true
+		# Verificar se o personagem sofreu dano de queda
+		if velocidade_queda > VELOCIDADE_LIM:
+			if !GameManager.imunidade:
+				var dano_queda = (velocidade_queda - VELOCIDADE_LIM) * DANO_MULTI
+				GameManager.applyDamage(snappedf(dano_queda,0.01))
+		velocidade_queda = 0.0 
+	
+	#Executa o movimento resultante	
 	move_and_slide()
 	
 		# ataque simples, a tecla eh H
@@ -157,7 +172,8 @@ func getPlayerLastDirection():
 	return 1
 
 
-# funcao que termina com a animacao de ataque
+# funcao que termina com a animacao de ataqueGameManager.life = min(GameManager.life, GameManager.max_life)
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack":
 		is_attacking = false
@@ -166,3 +182,15 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area is EnemyCollisionBox:
 		area.onPlayerCauseDamage(10)
+
+#Roda se entra em área escorregadia
+func _on_area_gelo_body_entered(body: Node2D) -> void:
+	if(body == self):
+		print(body.name + " entered the ice area")
+		is_on_ice = true
+
+#Roda se sai de área escorregadia
+func _on_area_gelo_body_exited(body: Node2D) -> void:
+	if(body == self):
+		print(body.name + " exited the ice area")
+		is_on_ice = false
