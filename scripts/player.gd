@@ -21,6 +21,7 @@ const DANO_MULTI = 0.25
 const DASH_SPEED = 400.0
 const NORMAL_FRICTION = 500
 const ICY_FRICTION = 50
+const AIR_FRICTION = 0.005 #Entre 0 e 1, mas precisa ser bem baixo
 var current_friction = NORMAL_FRICTION
 
 var can_jump = false
@@ -93,7 +94,7 @@ func _physics_process(delta: float) -> void:
 		if direction == 0:
 			#Mantém a inércia do pulo
 			velocity.x += direction * SPEED * delta
-			velocity.x = lerp(velocity.x, direction * SPEED, 0.02)
+			velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
 		else:
 			velocity.x = direction * SPEED
 			animated_sprite.scale.x = direction
