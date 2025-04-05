@@ -22,15 +22,15 @@ const DASH_SPEED = 400.0
 const NORMAL_FRICTION = 500
 const ICY_FRICTION = 50
 const AIR_FRICTION = 0.005 #Entre 0 e 1, mas precisa ser bem baixo
-var current_friction = NORMAL_FRICTION
 
+var current_friction = NORMAL_FRICTION
 var can_jump = false
 var can_shoot = true
 var can_dash = true
 var is_dashing = false
+var dash_direction = 0
 var is_attacking = false
 var is_on_ice = false
-
 var velocidade_queda = 0.0
 var posicao_inicial = Vector2.ZERO  # Posição inicial
 
@@ -51,6 +51,7 @@ func _physics_process(delta: float) -> void:
 		if dash != null:
 			dash.play()
 		can_dash = false
+		dash_direction = getPlayerLastDirection()
 		$dashTimer.start()
 		$dashCooldown.start()
 		print("dash!")
@@ -87,7 +88,7 @@ func _physics_process(delta: float) -> void:
 	#Calcular física do movimento do player
 	#Primeiro confere o dash, para sobrescrever a inércia caso necessário
 	if is_dashing:
-		direction = getPlayerLastDirection()
+		direction = dash_direction
 		velocity.x = direction * DASH_SPEED
 		velocity.y = 0
 	elif not is_on_floor(): #DURANTE PULO OU QUEDA
@@ -155,7 +156,6 @@ func shoot():
 # Controlar o tempo de cooldown do tiro
 func _on_fire_cooldown_timeout() -> void:
 	can_shoot = true
-	
 
 # Ao finalizar o dash
 func _on_dash_timer_timeout() -> void:
@@ -171,9 +171,7 @@ func getPlayerLastDirection():
 	if (sprite.position.x > 0): return -1
 	return 1
 
-
 # funcao que termina com a animacao de ataqueGameManager.life = min(GameManager.life, GameManager.max_life)
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack":
 		is_attacking = false
