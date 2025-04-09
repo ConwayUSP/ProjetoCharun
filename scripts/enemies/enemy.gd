@@ -72,7 +72,8 @@ func applyDamage(damage: float) -> void:
 	
 func die() -> void:
 	print("cabo pro bixin")
-	
+	if AudioManager.morte != null:
+		AudioManager.morte.play()
 	# Função de drop de moeda
 	var drop = COIN.instantiate()
 	owner.add_child(drop)

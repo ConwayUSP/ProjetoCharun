@@ -4,9 +4,11 @@ var score = 0
 var life = 100.0
 var imunidade = false
 
+@export var morteSom: AudioStreamPlayer2D
 @onready var score_label: Label = $HUD/ScoreLabel
 @onready var life_label: Label = $HUD/LifeLabel
 @onready var timer: Timer = $Timer
+
 
 func add_point():
 	score += 1
@@ -24,6 +26,8 @@ func applyDamage(damage: float):
 	
 	if life <= 0:
 		life_label.text = "Você possui 0 de vida"
+		if AudioManager.morte != null:
+			AudioManager.morte.play()
 		death()  
 
 func death():

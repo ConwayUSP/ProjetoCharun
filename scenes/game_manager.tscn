@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjh6s23otceh2"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_ygm7g"]
+[ext_resource type="Script" uid="uid://cww7rhhr07pk" path="res://scripts/game_manager.gd" id="1_ygm7g"]
 [ext_resource type="FontFile" uid="uid://bqhgbt03a1lyu" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="2_e26q1"]
 
 [node name="GameManager" type="Node"]

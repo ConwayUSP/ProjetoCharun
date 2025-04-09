@@ -21,6 +21,7 @@ config/windows_native_icon="res://assets/icon.ico"
 
 Music="*res://scenes/music.tscn"
 GameManager="*res://scenes/game_manager.tscn"
+AudioManager="*res://efeitos_sonoros/audio_manager.gd"
 
 [global_group]
 
