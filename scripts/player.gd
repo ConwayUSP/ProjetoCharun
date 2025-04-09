@@ -119,6 +119,7 @@ func _physics_process(delta: float) -> void:
 	
 		# ataque simples, a tecla eh H
 	if   Input.is_action_just_pressed("attack") and !is_attacking:
+		
 		is_attacking = true
 	if is_attacking:
 		hitbox_attack.disabled = false

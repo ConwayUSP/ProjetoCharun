@@ -9,7 +9,6 @@ var morte : AudioStreamPlayer2D
 var powerUp : AudioStreamPlayer2D
 var tiro : AudioStreamPlayer2D
 var cura : AudioStreamPlayer2D
-var blocoDestruido: AudioStreamPlayer2D
 
 func _ready():
 	# Crie os nós de áudio e adicione como filhos
@@ -37,9 +36,6 @@ func _ready():
 	cura = AudioStreamPlayer2D.new()
 	cura.stream = preload("res://efeitos_sonoros/cura.wav")
 	add_child(cura)  # Adiciona à árvore de nós
-	blocoDestruido = AudioStreamPlayer2D.new()
-	blocoDestruido.stream = preload("res://efeitos_sonoros/blocoDestruido.wav")
-	add_child(blocoDestruido)
 	
 	
    
