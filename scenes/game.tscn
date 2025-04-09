@@ -1539,7 +1539,7 @@ position = Vector2(65, -59)
 
 [node name="Player" parent="." instance=ExtResource("1_r07xc")]
 unique_name_in_owner = true
-position = Vector2(2763, 1446)
+position = Vector2(2761, 1459)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -10)
