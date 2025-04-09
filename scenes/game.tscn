@@ -9,14 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://wrtooggxrcg" path="res://scenes/roll.tscn" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bnye5oi4pmt7m" path="res://scenes/coin.tscn" id="4_7a35y"]
 [ext_resource type="PackedScene" uid="uid://bmsne38davsio" path="res://scenes/slime.tscn" id="6_wyiro"]
-[ext_resource type="PackedScene" uid="uid://bkbbo25rex202" path="res://scenes/area_gelo.tscn" id="7_rysoc"]
+[ext_resource type="PackedScene" path="res://scenes/area_gelo.tscn" id="7_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dpypcgou32p63" path="res://scenes/skeleton.tscn" id="10_vtaks"]
 [ext_resource type="Script" uid="uid://cqu5dpr2y508w" path="res://scripts/enemies/flyZone.gd" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dw6ewf886ra3s" path="res://scenes/tormenta.tscn" id="12_kvuet"]
 [ext_resource type="Texture2D" uid="uid://cha7qbi5uv2e5" path="res://assets/enemies/sprites/cerberus.png" id="13_kvuet"]
 [ext_resource type="Script" uid="uid://dxw2s0m853j2q" path="res://scripts/enemies/floorMovingBoss.gd" id="13_trtic"]
-[ext_resource type="PackedScene" uid="uid://co32fnpj0l8mi" path="res://scenes/brackable_tiles.tscn" id="16_ca42v"]
-[ext_resource type="PackedScene" uid="uid://cfjwcviu4scxn" path="res://scenes/pocao.tscn" id="16_rysoc"]
+[ext_resource type="PackedScene" path="res://scenes/brackable_tiles.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://d2avu75vmljph" path="res://scenes/pocao.tscn" id="16_rysoc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epy4c"]
 texture = ExtResource("1_m0546")

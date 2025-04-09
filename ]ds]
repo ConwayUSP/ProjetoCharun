@@ -1,0 +1,432 @@
+[33mcommit 416a2cf10111c2f2861c7eb3d7688e08118064d0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mAudioManager[m[33m)[m
+Author: eduardo <11eduardoalmeida@gmail.com>
+Date:   Wed Apr 9 19:36:27 2025 -0300
+
+    Criando AudioManager e adicionando/corrigindo novos efeitos sonoros
+
+[33mcommit f51f533c965434d2cd5b5068f138ea184a783bac[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 415ee8d 26f28ba
+Author: derekky <75181685+Derekky@users.noreply.github.com>
+Date:   Sat Apr 5 16:31:58 2025 -0300
+
+    Merge pull request #50 from ConwayUSP/fix_dashDirection
+    
+    Fix dash direction and air inertia
+
+[33mcommit 26f28bac4e7519481d64a95ca0b003cefb4a5faa[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Sat Apr 5 16:28:24 2025 -0300
+
+    fixed air inertia
+    
+    actually removed air inertia because the game is unplayable if you actually want to acknowledge real life physics
+
+[33mcommit 2538e503b4a2a547d9f975213cb7e73c7b82f55b[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Sat Apr 5 15:57:53 2025 -0300
+
+    fixed dash direction
+
+[33mcommit 415ee8d097cd98c150597c40dad673d4962248b1[m
+Merge: 8bf8a47 bf7412a
+Author: derekky <75181685+Derekky@users.noreply.github.com>
+Date:   Sat Apr 5 15:47:03 2025 -0300
+
+    Merge pull request #47 from ConwayUSP/feature_plataformaEscorregadia
+    
+    Added sliding zone and added friction physics
+
+[33mcommit bf7412aaa89a5b72ba26bdfe0a10f5f14f4ff19e[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Sat Apr 5 15:45:53 2025 -0300
+
+    agora vai
+    
+    Criada a variável AIR_FRICTION para melhor visualização, além de diminuir seu valor para 0.005
+
+[33mcommit 8a88809d4ec34015a64cf8bf385f4b7932224a8e[m
+Merge: 7c33d09 8bf8a47
+Author: derekky <75181685+Derekky@users.noreply.github.com>
+Date:   Sat Apr 5 15:33:45 2025 -0300
+
+    Merge branch 'main' into feature_plataformaEscorregadia
+
+[33mcommit 8bf8a476e787eba32a566f7e6b187706dd670082[m
+Merge: 7462001 0bc6205
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Sat Apr 5 14:34:21 2025 -0300
+
+    Merge pull request #48 from ConwayUSP/Fixed_BrackableTiles
+    
+    concertada a colisão com as tiles quebraveis
+
+[33mcommit 0bc6205f1a94f6b973aa0569a8c8131fed8be156[m[33m ([m[1;31morigin/Fixed_BrackableTiles[m[33m)[m
+Author: ALLVesgo <dheeiner@gmail.com>
+Date:   Sat Apr 5 14:06:39 2025 -0300
+
+    concertada a colisão com as tiles quebraveis
+
+[33mcommit 7c33d097599aab9c10eeafff9e589dae58dc12bf[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Fri Apr 4 11:08:42 2025 -0300
+
+    Correcao de layers, localizacao de arquivos e tilemap
+
+[33mcommit 5f9ccead83de556517cc31e7345c83799c42a2a4[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Fri Apr 4 00:56:15 2025 -0300
+
+    Added sliding zone
+    
+    Para tal foi necessário a introdução de fricção ao personagem. Também foram realizadas algumas reestruturações no cálculo de movimento vertical e horizontal. Acabei movendo o personagem e deixei uma plataforma deslizante no meio do mapa para testes, à esquerda de onde o personagem está posicionado inicialmente
+
+[33mcommit 7462001d9007802b0662358c3ac7f3e5c4eb8f9c[m
+Merge: c71ab4a 62f46ee
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Thu Apr 3 00:09:54 2025 -0300
+
+    Merge pull request #46 from ConwayUSP/DanoQuedaCorrigido-Cura
+    
+    Reajustando dano de queda e adicionando poção de cura
+
+[33mcommit 62f46ee4bcf8cf9874ad004766879ac92de366a9[m[33m ([m[1;31morigin/DanoQuedaCorrigido-Cura[m[33m, [m[1;32mDanoQuedaCorrigido-Cura[m[33m)[m
+Author: eduardo <11eduardoalmeida@gmail.com>
+Date:   Wed Apr 2 16:35:29 2025 -0300
+
+    Reajustando dano de queda e adicionando poção de cura
+
+[33mcommit c71ab4a45b8ff664ca8c84fc3d23dc158c11a703[m
+Merge: f98679f 54ac2b1
+Author: DerickArriado <derick.arriado@usp.br>
+Date:   Wed Apr 2 00:34:52 2025 -0300
+
+    Merge pull request #44 from ConwayUSP/level1feito02/04
+    
+    grossolvl1feito
+
+[33mcommit 54ac2b1a46e0a4f444f829e0e0d508f0b0e88916[m[33m ([m[1;31morigin/level1feito02/04[m[33m)[m
+Author: DerickArriado <derick.arriado@usp.br>
+Date:   Wed Apr 2 00:28:48 2025 -0300
+
+    grossolvl1feito
+
+[33mcommit f98679ffb9dc4688658676f9e43240cb30013bd2[m
+Merge: ff6337d ddcb110
+Author: DerickArriado <derick.arriado@usp.br>
+Date:   Mon Mar 31 23:50:12 2025 -0300
+
+    Merge pull request #43 from ConwayUSP/leveldesign+coisa31/03
+    
+    +coisaleveldesign31/03
+
+[33mcommit ddcb1102a5baec8c2757f7f77286cc535ab97804[m[33m ([m[1;31morigin/leveldesign+coisa31/03[m[33m)[m
+Author: DerickArriado <derick.arriado@usp.br>
+Date:   Mon Mar 31 19:01:50 2025 -0300
+
+    +coisaleveldesign31/03
+
+[33mcommit ff6337d082975bccd5404805e13744d63a1167ab[m
+Merge: ae525f6 f9e67cf
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Sun Mar 30 22:25:33 2025 -0300
+
+    Merge pull request #42 from ConwayUSP/assets_caverna
+    
+    assets caverna e leveldigns
+
+[33mcommit f9e67cf44cbb4a0816ea02ffa1e95463043c22d7[m
+Author: DerickArriado <derick.arriado@usp.br>
+Date:   Sun Mar 30 22:17:12 2025 -0300
+
+    assets caverna e leveldigns
+
+[33mcommit ae525f6b132f70a61bdfe814e542e5b26add07a5[m
+Merge: 4324b85 15c8eeb
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Mon Mar 24 15:18:52 2025 -0300
+
+    Merge pull request #40 from ConwayUSP/dropCoin
+    
+    Drop de moedas
+
+[33mcommit 15c8eebdb332e9486398b7faa00208a9ae9b1f14[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Mon Mar 24 18:16:12 2025 -0300
+
+    Drop de moedas
+
+[33mcommit 4324b853845d5f15a13b5f4307999e6f844aff48[m
+Merge: 9d251de 45b2a0d
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Wed Mar 19 23:42:53 2025 -0300
+
+    Merge pull request #38 from ALLVesgo/main
+    
+    Ataque base adicionado
+
+[33mcommit 9d251dead68a9ff849e3b40fb998173fa3fc0b5d[m
+Merge: 7db6d08 3713ea4
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Wed Mar 19 23:39:38 2025 -0300
+
+    Merge pull request #39 from ConwayUSP/feature_PlayerDash
+    
+    Feature player dash
+
+[33mcommit 45b2a0d71b2f0e259075f04a92d1c275663cf50e[m
+Author: ALLVesgo <dheeiner@gmail.com>
+Date:   Tue Mar 18 18:31:45 2025 -0300
+
+    adicionado attaque base
+
+[33mcommit 057b1889924c2a5c7167b2f26700721bcaaee4e0[m
+Author: eduardo <11eduardoalmeida@gmail.com>
+Date:   Tue Mar 18 16:50:45 2025 -0300
+
+    Adicionando efeitos sonoros
+
+[33mcommit 7b299638a31a1b2329dd8e9f5a7354483e33d4b1[m
+Merge: 496a599 3646e9f
+Author: Gabriel Luís da Silva <79342117+mercuryVM@users.noreply.github.com>
+Date:   Tue Mar 18 08:40:38 2025 -0300
+
+    Merge pull request #29 from ConwayUSP/inimigos
+    
+    Adição da Tormenta & Cerberus
+
+[33mcommit 3646e9fbbf925f1210c33af6eafe2a968989d98a[m
+Author: Gabriel Luís da Silva <officialmercurymusicdj@gmail.com>
+Date:   Sun Mar 16 18:39:08 2025 -0300
+
+    Cerberus prototipagem
+
+[33mcommit e596f405b74a4d7eeeeafcd1a954bc16cd5ae79f[m
+Author: Gabriel Luís da Silva <officialmercurymusicdj@gmail.com>
+Date:   Sun Mar 16 18:05:34 2025 -0300
+
+    Adição da Tormenta
+
+[33mcommit 496a5995593d2236ab9888438732ec6c29efad8b[m
+Merge: 7db6d08 3713ea4
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Sun Mar 16 15:20:54 2025 -0300
+
+    Merge pull request #27 from ConwayUSP/feature_PlayerDash
+    
+    Added simple dash
+
+[33mcommit 3713ea4e2601f81e42dfba86fd9c2f106804ab22[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Sun Mar 16 15:18:40 2025 -0300
+
+    added animation to dash
+
+[33mcommit 3c1d1bec937ec455ac2f00e75ed8d875c04c003b[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Sun Mar 16 15:04:04 2025 -0300
+
+    Fixed dash initiator
+
+[33mcommit 41f4578ecfbf2172b9ced4af351933bd0708e436[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Sun Mar 16 13:58:15 2025 -0300
+
+    removed gravity during dash
+
+[33mcommit 74f9fc7a58202d2e6d227d34b7083c563b665518[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Sun Mar 16 13:48:17 2025 -0300
+
+    added simple dash
+
+[33mcommit 7db6d08a5a2af0902864f163be75286b6877eff3[m
+Merge: d0a1b96 cee2699
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Sat Mar 15 23:20:14 2025 -0300
+
+    Merge pull request #26 from ConwayUSP/inimigos
+    
+    Atualizações nos Inimigos
+
+[33mcommit cee2699bbd85216d6d73efc9da75b648ecef6292[m
+Author: Gabriel Luís da Silva <officialmercurymusicdj@gmail.com>
+Date:   Sat Mar 15 21:26:13 2025 -0300
+
+    Prototipo do esqueleto finalizado. Adicionado feedback de dano + animacao de morte. Atualização do Inimigo Slime para reaproveitar orientação a objeto
+
+[33mcommit 60afe14a18ca213182cb892c5b45e54b5f26e915[m
+Author: Gabriel Luís da Silva <officialmercurymusicdj@gmail.com>
+Date:   Sat Mar 15 19:04:44 2025 -0300
+
+    Dano nos inimigos
+
+[33mcommit 84861996709307a8383156a633788a596f78d15d[m
+Author: Gabriel Luís da Silva <officialmercurymusicdj@gmail.com>
+Date:   Sat Mar 15 18:39:15 2025 -0300
+
+    Organizando inimigos para POO
+
+[33mcommit d0a1b96cebeb7ca1de50cb6c27e924af0787718f[m
+Merge: 1f8356a 3ccb89a
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sat Mar 15 14:51:11 2025 -0300
+
+    Mudanças do Godot 4.4
+
+[33mcommit 1f8356afba9482dd51dbcd74030fc3c2f005d91d[m
+Merge: 3693568 df20f15
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sat Mar 15 14:31:49 2025 -0300
+
+    Godot 4.4 changes
+
+[33mcommit 3ccb89a09f68770ff1c2bbae826d9a3cef2dfa04[m
+Merge: 3693568 df20f15
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sat Mar 15 14:31:49 2025 -0300
+
+    teste
+
+[33mcommit 369356840e259a22853b2f389189b2e92636b78e[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sat Mar 15 13:21:40 2025 -0300
+
+    Mudanças no gitignore
+
+[33mcommit df20f15aca7a7054c5f3784af7360c05085cb22d[m
+Merge: 1b39bb3 e9e19bf
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Sat Mar 15 11:25:22 2025 -0300
+
+    Merge pull request #25 from ConwayUSP/Fire_powerup
+    
+    Mudanças do Godot 4.4
+
+[33mcommit e9e19bff90fdc7d39f5aa3d0c61e10a99bb8cfd5[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sat Mar 15 14:23:43 2025 -0300
+
+    Fire bug
+
+[33mcommit 1b39bb3295b04a5604939ea306c85e492bc6a507[m
+Merge: 2d0ad40 01f729d
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Sat Mar 15 11:01:47 2025 -0300
+
+    Merge pull request #24 from ConwayUSP/Fire_powerup
+    
+    Merge pull request #23 from ConwayUSP/main
+
+[33mcommit 01f729d54ce63ab5ae904f661c1c15f06d76f12d[m
+Merge: f7770c4 2d0ad40
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Sat Mar 15 11:01:17 2025 -0300
+
+    Merge pull request #23 from ConwayUSP/main
+    
+    Poder de retirada de dano de queda
+
+[33mcommit 2d0ad40296fd96ce02a11c8e2cd8516f4c13a17a[m
+Author: gustavogfranca <gustavo.gouveia.franca@gmail.com>
+Date:   Sat Mar 15 10:38:16 2025 -0300
+
+    Implementacao prototipo da skill de imunidade ao dano de queda
+
+[33mcommit f7770c40ee7a1f714be1de0aea406332e5b8020f[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sat Mar 15 02:57:33 2025 -0300
+
+    Alteração de Layer e comentário
+
+[33mcommit ffe8d76e805865740feaef067a739332f9940f1f[m
+Merge: 3d53ca6 f7770c4
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Sat Mar 15 00:00:06 2025 -0300
+
+    Merge pull request #22 from ConwayUSP/Fire_powerup
+    
+    Alteração de Layer e comentário
+
+[33mcommit 4a357e8674ca3cc4bc561c848378f8e2b9bb2e71[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Fri Mar 14 18:19:20 2025 -0300
+
+    Adicionado poder de fogo
+
+[33mcommit 3d53ca6e6b33d34808abad09fd2434648a57846b[m
+Merge: 13e9b53 4a357e8
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Fri Mar 14 15:22:56 2025 -0300
+
+    Merge pull request #6 from ConwayUSP/Fire_powerup
+    
+    Adicionado poder de fogo
+
+[33mcommit 13e9b53bc563d62f4c925caf79e483378ab68f1f[m
+Merge: 2e786f8 a4c2dcc
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Wed Mar 5 22:39:54 2025 -0300
+
+    Merge pull request #5 from ConwayUSP/Mudancas_HUD_e_Queda
+    
+    HUD de vida e mudanças na queda
+
+[33mcommit a4c2dccefea874abbdfb8f1e7713e03e9c0ecd08[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Thu Mar 6 01:37:11 2025 -0300
+
+    HUD de vida e mudanças na queda
+
+[33mcommit 2e786f8ab0d24b572bd4c60c63b170294a0d20ef[m
+Merge: 0ed9d2b fd97377
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Wed Mar 5 20:53:08 2025 -0300
+
+    Merge pull request #4 from DuAlmeida995/fallDamage
+    
+    Adicionando dano de queda
+
+[33mcommit fd973779ac0dd2f81c14523f9dc93a69af803312[m
+Author: eduardo <11eduardoalmeida@gmail.com>
+Date:   Wed Mar 5 20:48:18 2025 -0300
+
+    Adicionando dano de queda
+
+[33mcommit 0ed9d2bd75fc8bef2a2cf61dbc340c5224e1d6a3[m
+Author: Derekky <derek.vieira.s@gmail.com>
+Date:   Wed Mar 5 20:06:46 2025 -0300
+
+    small adjustments on HUD
+
+[33mcommit ae8fdbfa8f35584dc415a7482e960eb09181c7de[m
+Merge: 9f4f6d6 0a436a3
+Author: JArroioS <49651793+JArroioS@users.noreply.github.com>
+Date:   Wed Mar 5 19:58:39 2025 -0300
+
+    Merge pull request #3 from ConwayUSP/CoinsHud
+    
+    Adicionado a hud de coleta de moedas
+
+[33mcommit 0a436a34bafca5d92331d45ab08be456492baa66[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Wed Mar 5 22:56:12 2025 -0300
+
+    Adicionado a hud de coleta de moedas
+
+[33mcommit 9f4f6d6c942a4a7ad1f37d1b102a0306aa01e773[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sun Jan 26 13:54:06 2025 -0600
+
+    Adição de CoyoteJump
+
+[33mcommit 94f0364e9e6e5e030c1c997579269a0d9e134559[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sun Jan 26 01:58:35 2025 -0600
+
+    projeto apos concluir tutorial
+
+[33mcommit 976c553f608b128517c5239881412678b1cb43ab[m
+Author: JArroioS <julioarroios2@gmail.com>
+Date:   Sun Jan 26 00:42:29 2025 -0300
+
+    Primeiro Commit
