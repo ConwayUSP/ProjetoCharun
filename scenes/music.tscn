@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://hodrte2wkwvs" path="res://assets/brackeys_platformer_assets/music/time_for_adventure.mp3" id="1_gbjdy"]
 
-[node name="Music" type="AudioStreamPlayer2D"]
+[node name="Music" type="AudioStreamPlayer"]
 stream = ExtResource("1_gbjdy")
 autoplay = true
 bus = &"Music"

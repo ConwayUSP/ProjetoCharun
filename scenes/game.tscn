@@ -1457,12 +1457,12 @@ position = Vector2(-53, 5)
 
 [node name="Player" parent="." instance=ExtResource("1_r07xc")]
 unique_name_in_owner = true
-position = Vector2(225, 928)
+position = Vector2(483, -24)
 collision_layer = 129
 collision_mask = 129
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -10)
+position = Vector2(22, 8)
 zoom = Vector2(2.5, 2.5)
 limit_bottom = 100000
 limit_smoothed = true
@@ -1479,13 +1479,13 @@ position = Vector2(200, 13)
 position = Vector2(87, -25)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("4_7a35y")]
-position = Vector2(136, 26)
+position = Vector2(412, -4)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("4_7a35y")]
-position = Vector2(152, 26)
+position = Vector2(428, -4)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("4_7a35y")]
-position = Vector2(168, 26)
+position = Vector2(444, -4)
 
 [node name="Coin5" parent="Coins" instance=ExtResource("4_7a35y")]
 position = Vector2(-440, -7)
