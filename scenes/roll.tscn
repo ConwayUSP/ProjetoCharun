@@ -5,36 +5,36 @@
 [ext_resource type="AudioStream" uid="uid://d2n3oekemj4t5" path="res://assets/brackeys_platformer_assets/sounds/explosion.wav" id="3_trshq"]
 [ext_resource type="AudioStream" uid="uid://0b7jyjojis7a" path="res://efeitos_sonoros/powerUp.wav" id="4_gfyf2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tp1g5"]
-atlas = ExtResource("1_tp1g5")
-region = Rect2(64, 168, 32, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdf18"]
-atlas = ExtResource("1_tp1g5")
-region = Rect2(96, 168, 32, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trshq"]
-atlas = ExtResource("1_tp1g5")
-region = Rect2(128, 168, 32, 28)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfyf2"]
 atlas = ExtResource("1_tp1g5")
-region = Rect2(160, 168, 32, 28)
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1m5y"]
+atlas = ExtResource("1_tp1g5")
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiwvl"]
+atlas = ExtResource("1_tp1g5")
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wyck"]
+atlas = ExtResource("1_tp1g5")
+region = Rect2(160, 160, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s1m5y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tp1g5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mdf18")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_trshq")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_gfyf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1m5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiwvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wyck")
 }],
 "loop": true,
 "name": &"default",
@@ -42,7 +42,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiwvl"]
-size = Vector2(5, 5.5)
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_awjao"]
 length = 0.001
@@ -151,10 +151,10 @@ position = Vector2(0, 1)
 scale = Vector2(0.357143, 0.357143)
 sprite_frames = SubResource("SpriteFrames_s1m5y")
 autoplay = "default"
-frame_progress = 0.438366
+frame_progress = 0.818159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.25)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_jiwvl")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
