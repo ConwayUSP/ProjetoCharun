@@ -6,6 +6,6 @@ extends Area2D
 func _on_body_entered(_body: Node2D) -> void:
 	if animation_player.current_animation != "pickup":
 		GameManager.add_point()
-		if coletarMoeda != null:
-			coletarMoeda.play()  
+		if AudioManager.coletarMoeda != null:
+			AudioManager.coletarMoeda.play()  
 		animation_player.play("pickup")

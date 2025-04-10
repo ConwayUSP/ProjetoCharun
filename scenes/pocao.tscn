@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfjwcviu4scxn"]
+[gd_scene load_steps=6 format=3 uid="uid://d2avu75vmljph"]
 
-[ext_resource type="Script" uid="uid://ce03egpk0ngla" path="res://scripts/pocao.gd" id="1_rci0r"]
+[ext_resource type="Script" path="res://scripts/pocao.gd" id="1_rci0r"]
 [ext_resource type="Texture2D" uid="uid://jvtqnww8j671" path="res://assets/brackeys_platformer_assets/sprites/poção.png" id="2_uubmt"]
-[ext_resource type="AudioStream" uid="uid://m153txl8v35b" path="res://efeitos_sonoros/cura.wav" id="3_umgih"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f10we"]
 atlas = ExtResource("2_uubmt")
@@ -32,8 +31,5 @@ sprite_frames = SubResource("SpriteFrames_cn1uw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ptdde")
-
-[node name="CuraSom" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_umgih")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

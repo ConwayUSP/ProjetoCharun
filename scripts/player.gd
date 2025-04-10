@@ -7,10 +7,8 @@ class_name Player
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var fire_cooldown: Timer = $FireCooldown
 @onready var marker_2d: Marker2D = $Marker2D
-@onready var pulo: AudioStreamPlayer2D = $pulo_som
-@onready var tiro: AudioStreamPlayer2D = $tiro_som
-@onready var dash: AudioStreamPlayer2D = $dash_som
 @onready var hitbox_attack : CollisionShape2D = $AnimatedSprite2D/playerAttack/CollisionShape2D
+
 
 const FIRE = preload("res://scenes/fire.tscn")
 
@@ -40,16 +38,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Input do PULO
 	if Input.is_action_just_pressed("jump") and can_jump == true:
-		if pulo != null:
-			pulo.play()
+		if AudioManager.pulo != null:
+			AudioManager.pulo.play()
 		velocity.y = JUMP_VELOCITY
 		can_jump = false
 		
 	# Input do DASH
 	if Input.is_action_just_pressed("dash") and can_dash:
 		is_dashing = true
-		if dash != null:
-			dash.play()
+		if AudioManager.dash != null:
+			AudioManager.dash.play()
 		can_dash = false
 		dash_direction = getPlayerLastDirection()
 		$dashTimer.start()
@@ -121,6 +119,7 @@ func _physics_process(delta: float) -> void:
 	
 		# ataque simples, a tecla eh H
 	if   Input.is_action_just_pressed("attack") and !is_attacking:
+		
 		is_attacking = true
 	if is_attacking:
 		hitbox_attack.disabled = false
@@ -142,8 +141,8 @@ func shoot():
 	var bullet = FIRE.instantiate()
 	owner.add_child(bullet)
 	bullet.position = marker_2d.global_position
-	if tiro != null:
-		tiro.play()
+	if AudioManager.tiro != null:
+		AudioManager.tiro.play()
 	if animated_sprite.scale.x > 0:
 		bullet.scale = Vector2(0.25, 0.25)
 	else:

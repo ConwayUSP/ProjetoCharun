@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bdetuqx5opg44"]
+[gd_scene load_steps=26 format=4 uid="uid://bdetuqx5opg44"]
 
 [ext_resource type="Texture2D" uid="uid://ccvscexiw4v2e" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_m0546"]
 [ext_resource type="Script" uid="uid://ci47els0vikmv" path="res://scripts/game.gd" id="1_nfap2"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cha7qbi5uv2e5" path="res://assets/enemies/sprites/cerberus.png" id="13_kvuet"]
 [ext_resource type="Script" uid="uid://dxw2s0m853j2q" path="res://scripts/enemies/floorMovingBoss.gd" id="13_trtic"]
 [ext_resource type="PackedScene" uid="uid://co32fnpj0l8mi" path="res://scenes/brackable_tiles.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://d2avu75vmljph" path="res://scenes/pocao.tscn" id="16_rysoc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epy4c"]
 texture = ExtResource("1_m0546")
@@ -1586,10 +1587,13 @@ attackDamage = 10.0
 [node name="Potions" type="Node" parent="."]
 
 [node name="Poção1" parent="Potions" instance=ExtResource("16_ca42v")]
-position = Vector2(881, 501)
+position = Vector2(877, 502)
 
 [node name="Poção2" parent="Potions" instance=ExtResource("16_ca42v")]
 position = Vector2(2593, 535)
+
+[node name="Poção3" parent="Potions" instance=ExtResource("16_rysoc")]
+position = Vector2(911, 512)
 
 [node name="Killzone" parent="." instance=ExtResource("3_mlquu")]
 position = Vector2(2, 1450)
