@@ -5,7 +5,6 @@ var life = 100.0
 var max_life = 100.0
 var imunidade = false
 
-@export var morteSom: AudioStreamPlayer2D
 @onready var score_label: Label = $HUD/ScoreLabel
 @onready var life_label: Label = $HUD/LifeLabel
 @onready var timer: Timer = $Timer
