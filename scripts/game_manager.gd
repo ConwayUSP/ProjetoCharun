@@ -20,16 +20,18 @@ func add_imunity():
 	imunidade = true
 	
 func applyDamage(damage: float):
-	life -= damage
-	life_label.text = "Você possui " + str(life) + " de vida"
-	print("Dano de queda recebido: ", damage)
-	print("Vida restante: ", life)
-	
-	if life <= 0:
-		life_label.text = "Você possui 0 de vida"
-		if AudioManager.morte != null:
-			AudioManager.morte.play()
-		death()  
+	if damage > 1:
+		life -= damage
+		life_label.text = "Você possui " + str(life) + " de vida"
+		print("Dano de queda recebido: ", damage)
+		AudioManager.dano.play()
+		print("Vida restante: ", life)
+		
+		if life <= 0:
+			life_label.text = "Você possui 0 de vida"
+			if AudioManager.morte != null:
+				AudioManager.morte.play()
+			death()  
 
 func death():
 	Engine.time_scale = 0.5

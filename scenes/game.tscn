@@ -1467,7 +1467,7 @@ collision_layer = 129
 collision_mask = 131
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -10)
+position = Vector2(22, 8)
 zoom = Vector2(2.5, 2.5)
 limit_bottom = 100000
 limit_smoothed = true
@@ -1505,13 +1505,13 @@ texture = ExtResource("7_264po")
 position = Vector2(87, -25)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("4_7a35y")]
-position = Vector2(136, 26)
+position = Vector2(412, -4)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("4_7a35y")]
-position = Vector2(152, 26)
+position = Vector2(428, -4)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("4_7a35y")]
-position = Vector2(168, 26)
+position = Vector2(444, -4)
 
 [node name="Coin5" parent="Coins" instance=ExtResource("4_7a35y")]
 position = Vector2(-440, -7)
