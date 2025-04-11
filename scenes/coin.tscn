@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bnye5oi4pmt7m"]
+[gd_scene load_steps=20 format=3 uid="uid://bnye5oi4pmt7m"]
 
 [ext_resource type="Texture2D" uid="uid://berjhcnky6mry" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="1_aw33r"]
 [ext_resource type="Script" uid="uid://dkqmdtkbmamfy" path="res://scripts/coin.gd" id="1_bxdyx"]
-[ext_resource type="AudioStream" uid="uid://bficu3dww6dvf" path="res://efeitos_sonoros/coletarMoeda.wav" id="4_d14el"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pero"]
 atlas = ExtResource("1_aw33r")
@@ -188,9 +187,5 @@ shape = SubResource("CircleShape2D_v72sc")
 libraries = {
 &"": SubResource("AnimationLibrary_vcn5a")
 }
-
-[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(1, 1)
-stream = ExtResource("4_d14el")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
