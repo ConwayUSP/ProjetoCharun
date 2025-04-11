@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://wrtooggxrcg" path="res://scenes/roll.tscn" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bnye5oi4pmt7m" path="res://scenes/coin.tscn" id="4_7a35y"]
 [ext_resource type="PackedScene" uid="uid://bmsne38davsio" path="res://scenes/slime.tscn" id="6_wyiro"]
-[ext_resource type="PackedScene" uid="uid://baed5buffas3w" path="res://scenes/fire.tscn" id="7_264po"]
+[ext_resource type="Texture2D" uid="uid://b1t27ne1kl2x3" path="res://assets/Labareda.png" id="7_264po"]
 [ext_resource type="PackedScene" uid="uid://bkbbo25rex202" path="res://scenes/area_gelo.tscn" id="7_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dpypcgou32p63" path="res://scenes/skeleton.tscn" id="10_vtaks"]
 [ext_resource type="Script" uid="uid://cqu5dpr2y508w" path="res://scripts/enemies/flyZone.gd" id="12_dinhu"]
@@ -1464,7 +1464,7 @@ position = Vector2(-53, 5)
 unique_name_in_owner = true
 position = Vector2(-23, 1)
 collision_layer = 129
-collision_mask = 129
+collision_mask = 131
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -10)
@@ -1478,21 +1478,26 @@ position_smoothing_enabled = true
 [node name="SemDanoDeQueda" type="Node" parent="Skills"]
 
 [node name="Roll" parent="Skills/SemDanoDeQueda" instance=ExtResource("4_0tnpc")]
-position = Vector2(200, 13)
+position = Vector2(32, 9)
+collision_mask = 3
 
 [node name="Roll2" parent="Skills/SemDanoDeQueda" instance=ExtResource("4_0tnpc")]
 position = Vector2(2871, -157)
+collision_mask = 3
 
 [node name="Roll3" parent="Skills/SemDanoDeQueda" instance=ExtResource("4_0tnpc")]
 position = Vector2(2771, 799)
+collision_mask = 3
 
 [node name="PoderFogo" type="Node" parent="Skills"]
 
-[node name="Fire" parent="Skills/PoderFogo" instance=ExtResource("7_264po")]
-position = Vector2(2030, 525)
+[node name="Fire" type="Sprite2D" parent="Skills/PoderFogo"]
+position = Vector2(2038, 524)
+texture = ExtResource("7_264po")
 
-[node name="Fire2" parent="Skills/PoderFogo" instance=ExtResource("7_264po")]
-position = Vector2(328, 926)
+[node name="Fire2" type="Sprite2D" parent="Skills/PoderFogo"]
+position = Vector2(430, 927)
+texture = ExtResource("7_264po")
 
 [node name="Coins" type="Node" parent="."]
 
@@ -1633,7 +1638,7 @@ position = Vector2(1688, 511)
 [node name="Checkpoints" type="Node" parent="."]
 
 [node name="Checkpoint (nao_implementado)" type="Sprite2D" parent="Checkpoints"]
-position = Vector2(145, -23)
+position = Vector2(144, -23)
 texture = ExtResource("18_ssvqc")
 
 [node name="Checkpoint (nao_implementado)2" type="Sprite2D" parent="Checkpoints"]
