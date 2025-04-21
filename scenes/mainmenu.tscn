@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://khorgwnlbwj6"]
+
+[ext_resource type="Texture2D" uid="uid://cqbsymwfyw7mv" path="res://assets/brackeys_platformer_assets/sprites/Caverna/background1.png" id="1_3vvtq"]
+[ext_resource type="Texture2D" uid="uid://by2q07nlei64n" path="res://assets/brackeys_platformer_assets/sprites/Caverna/background3.png" id="2_s5g8n"]
+[ext_resource type="Texture2D" uid="uid://c7lv1mlcmqhul" path="res://assets/brackeys_platformer_assets/sprites/Caverna/background4b.png" id="3_7yvfd"]
+[ext_resource type="FontFile" uid="uid://bqhgbt03a1lyu" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="4_dfy5j"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3vvtq")
+
+[node name="Cave" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s5g8n")
+
+[node name="Pond" type="TextureRect" parent="Background/Cave"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7yvfd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Titulo" type="Label" parent="MarginContainer/MainContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = ExtResource("4_dfy5j")
+theme_override_font_sizes/font_size = 120
+text = "Charun"
+horizontal_alignment = 1
+vertical_alignment = 1
