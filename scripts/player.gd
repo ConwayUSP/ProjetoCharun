@@ -9,7 +9,6 @@ class_name Player
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var hitbox_attack : CollisionShape2D = $AnimatedSprite2D/playerAttack/CollisionShape2D
 
-
 const FIRE = preload("res://scenes/fire.tscn")
 
 const SPEED = 130.0
@@ -33,6 +32,8 @@ var velocidade_queda = 0.0
 var posicao_inicial = Vector2.ZERO  # Posição inicial
 
 func _ready() -> void:
+	GameManager.player = self
+	GameManager.carregar()
 	posicao_inicial = position
 
 func _physics_process(delta: float) -> void:

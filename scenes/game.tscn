@@ -18,7 +18,8 @@
 [ext_resource type="Script" uid="uid://dxw2s0m853j2q" path="res://scripts/enemies/floorMovingBoss.gd" id="13_trtic"]
 [ext_resource type="PackedScene" uid="uid://co32fnpj0l8mi" path="res://scenes/brackable_tiles.tscn" id="16_ca42v"]
 [ext_resource type="PackedScene" uid="uid://d2avu75vmljph" path="res://scenes/pocao.tscn" id="16_rysoc"]
-[ext_resource type="Texture2D" uid="uid://cnjg4rqqgbdne" path="res://assets/Checkpoint.png" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://dddkc012eb2bm" path="res://scenes/checkpoint.tscn" id="20_1kice"]
+[ext_resource type="PackedScene" uid="uid://dnrn8q6m3ufpk" path="res://scenes/menuzinho.tscn" id="20_5newe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epy4c"]
 texture = ExtResource("1_m0546")
@@ -1438,14 +1439,13 @@ animations = [{
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i4q85"]
 distance = -6.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rysoc"]
-load_path = "res://.godot/imported/Checkpoint.png-aa4d21df65c41cb1ee847e5893c3aad0.ctex"
-
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
+process_mode = 1
 script = ExtResource("1_nfap2")
 player = NodePath("Player")
 
 [node name="TileMap" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="Background" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
@@ -1462,9 +1462,10 @@ position = Vector2(-53, 5)
 
 [node name="Player" parent="." instance=ExtResource("1_r07xc")]
 unique_name_in_owner = true
+process_mode = 1
 position = Vector2(-23, 1)
-collision_layer = 129
-collision_mask = 131
+collision_layer = 133
+collision_mask = 129
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(22, 8)
@@ -1474,11 +1475,12 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="Skills" type="Node" parent="."]
+process_mode = 1
 
 [node name="SemDanoDeQueda" type="Node" parent="Skills"]
 
 [node name="Roll" parent="Skills/SemDanoDeQueda" instance=ExtResource("4_0tnpc")]
-position = Vector2(32, 9)
+position = Vector2(72, 25)
 collision_mask = 3
 
 [node name="Roll2" parent="Skills/SemDanoDeQueda" instance=ExtResource("4_0tnpc")]
@@ -1565,14 +1567,6 @@ autoplay = "RESET"
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Skeleton" parent="Enemies" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
-position = Vector2(36, -48)
-SPEED = 20
-game_instance = NodePath("../..")
-
-[node name="Slime" parent="Enemies" instance=ExtResource("6_wyiro")]
-position = Vector2(218, -16)
-
 [node name="TormentaComponent" type="Node" parent="Enemies"]
 
 [node name="TormentaZone" type="Node2D" parent="Enemies/TormentaComponent"]
@@ -1602,14 +1596,80 @@ metadata/_edit_group_ = true
 [node name="RayCast2D" type="RayCast2D" parent="Enemies/Cerberus"]
 target_position = Vector2(0, 9)
 
-[node name="Slime2" parent="Enemies" instance=ExtResource("6_wyiro")]
-position = Vector2(1265, 448)
+[node name="Skeletons" type="Node" parent="Enemies"]
 
-[node name="Skeleton2" parent="Enemies" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
-position = Vector2(1637, 510)
+[node name="Skeleton" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(481, -3)
+SPEED = 20
+game_instance = NodePath("../../..")
+
+[node name="Skeleton2" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(1511, -107)
 SPEED = 10
-game_instance = NodePath("../..")
+game_instance = NodePath("../../..")
 attackDamage = 10.0
+
+[node name="Skeleton3" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(2073, -91)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Skeleton4" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(2824, 524)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Skeleton5" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(1882, 563)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Skeleton6" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(1112, 367)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Skeleton7" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(481, 921)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Skeleton8" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(674, 926)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Skeleton9" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(798, 932)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Skeleton10" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(1551, 823)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Skeleton11" parent="Enemies/Skeletons" node_paths=PackedStringArray("game_instance") instance=ExtResource("10_vtaks")]
+position = Vector2(2481, 869)
+SPEED = 10
+game_instance = NodePath("../../..")
+attackDamage = 10.0
+
+[node name="Slimes" type="Node" parent="Enemies"]
+
+[node name="Slime" parent="Enemies/Slimes" instance=ExtResource("6_wyiro")]
+position = Vector2(218, -16)
+
+[node name="Slime2" parent="Enemies/Slimes" instance=ExtResource("6_wyiro")]
+position = Vector2(1265, 448)
 
 [node name="Potions" type="Node" parent="."]
 
@@ -1637,61 +1697,79 @@ position = Vector2(1688, 511)
 
 [node name="Checkpoints" type="Node" parent="."]
 
-[node name="Checkpoint (nao_implementado)" type="Sprite2D" parent="Checkpoints"]
-position = Vector2(144, -23)
-texture = ExtResource("18_ssvqc")
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("20_1kice")]
+position = Vector2(137, -23)
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)2" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(322, -8)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)3" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(789, -41)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)4" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(1271, -135)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)5" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(2450, -106)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)6" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(2776, 515)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)7" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint7" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(2105.42, 535.647)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)8" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint8" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(1571.58, 473.237)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)9" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint9" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(941, 519)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)10" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint10" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(839, 935)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)11" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint11" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(2766, 871)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)12" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint12" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(2921, 1095)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)13" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint13" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(952, 1321)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
 
-[node name="Checkpoint (nao_implementado)14" type="Sprite2D" parent="Checkpoints"]
+[node name="Checkpoint14" parent="Checkpoints" instance=ExtResource("20_1kice")]
 position = Vector2(370.565, 1416.75)
-texture = SubResource("CompressedTexture2D_rysoc")
+collision_layer = 1
+collision_priority = 10.0
+
+[node name="temp_menu" type="CanvasLayer" parent="."]
+
+[node name="menuzinho" parent="temp_menu" instance=ExtResource("20_5newe")]
 
 [connection signal="body_entered" from="Platforms/AreaGelo" to="Player" method="_on_area_gelo_body_entered"]
 [connection signal="body_exited" from="Platforms/AreaGelo" to="Player" method="_on_area_gelo_body_exited"]
