@@ -1,0 +1,184 @@
+[gd_scene load_steps=9 format=3 uid="uid://khorgwnlbwj6"]
+
+[ext_resource type="Texture2D" uid="uid://cqbsymwfyw7mv" path="res://assets/brackeys_platformer_assets/sprites/Caverna/background1.png" id="1_3vvtq"]
+[ext_resource type="Script" uid="uid://dxlua166mc6uv" path="res://scripts/mainmenu.gd" id="1_85riq"]
+[ext_resource type="Texture2D" uid="uid://by2q07nlei64n" path="res://assets/brackeys_platformer_assets/sprites/Caverna/background3.png" id="2_s5g8n"]
+[ext_resource type="Texture2D" uid="uid://c7lv1mlcmqhul" path="res://assets/brackeys_platformer_assets/sprites/Caverna/background4b.png" id="3_7yvfd"]
+[ext_resource type="Texture2D" uid="uid://curs37mxh1vj6" path="res://assets/ArtConceptCharon-removebg-preview.png" id="4_85riq"]
+[ext_resource type="FontFile" uid="uid://bqhgbt03a1lyu" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="4_dfy5j"]
+[ext_resource type="FontFile" uid="uid://dpxw8edp118g6" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="5_s5g8n"]
+[ext_resource type="Texture2D" uid="uid://bsu25gie1qtyf" path="res://assets/ArtConceptKnight-removebg-preview.png" id="5_wf3n4"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_85riq")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3vvtq")
+
+[node name="Cave" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s5g8n")
+
+[node name="Pond" type="TextureRect" parent="Background/Cave"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7yvfd")
+
+[node name="Charon" type="TextureRect" parent="Background"]
+layout_direction = 1
+layout_mode = 0
+offset_left = 806.0
+offset_top = 262.0
+offset_right = 1282.0
+offset_bottom = 572.0
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 8
+texture = ExtResource("4_85riq")
+expand_mode = 3
+
+[node name="Knight" type="TextureRect" parent="Background"]
+layout_direction = 4
+layout_mode = 0
+offset_left = 465.0
+offset_top = 170.0
+offset_right = 515.0
+offset_bottom = 298.0
+scale = Vector2(5, 5)
+texture = ExtResource("5_wf3n4")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Titulo" type="Label" parent="MarginContainer/MainContainer/TitleContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = ExtResource("4_dfy5j")
+theme_override_font_sizes/font_size = 120
+text = "Charun"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="OptionsContainer" type="HBoxContainer" parent="MarginContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainContainer/OptionsContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 21
+alignment = 2
+
+[node name="Novojogo" type="Button" parent="MarginContainer/MainContainer/OptionsContainer/VBoxContainer" groups=["buttons_menu"]]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_hover_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_focus_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_s5g8n")
+theme_override_font_sizes/font_size = 30
+text = "Novo Jogo"
+flat = true
+alignment = 0
+
+[node name="Continuar" type="Button" parent="MarginContainer/MainContainer/OptionsContainer/VBoxContainer" groups=["buttons_menu"]]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_hover_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_focus_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_s5g8n")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Carregar Jogo"
+flat = true
+alignment = 0
+
+[node name="Config" type="Button" parent="MarginContainer/MainContainer/OptionsContainer/VBoxContainer" groups=["buttons_menu"]]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_hover_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_focus_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_s5g8n")
+theme_override_font_sizes/font_size = 30
+text = "Configurações"
+flat = true
+alignment = 0
+
+[node name="Creditos" type="Button" parent="MarginContainer/MainContainer/OptionsContainer/VBoxContainer" groups=["buttons_menu"]]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_hover_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_focus_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_s5g8n")
+theme_override_font_sizes/font_size = 30
+text = "Créditos"
+flat = true
+alignment = 0
+
+[node name="Sair" type="Button" parent="MarginContainer/MainContainer/OptionsContainer/VBoxContainer" groups=["buttons_menu"]]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_hover_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_colors/font_focus_color = Color(0.294118, 0, 0.741176, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_s5g8n")
+theme_override_font_sizes/font_size = 30
+text = "Sair"
+flat = true
+alignment = 0
