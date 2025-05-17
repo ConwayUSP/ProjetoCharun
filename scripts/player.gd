@@ -71,6 +71,8 @@ func _physics_process(delta: float) -> void:
 	# Reproduzir a animação
 	if GameManager.imunidade == true:
 		sprite.visible = true
+	if GameManager.imunidade == false:
+		sprite.visible = false
 	if is_dashing:
 		animated_sprite.play("roll")
 	elif is_attacking:
