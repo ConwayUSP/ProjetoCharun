@@ -6,7 +6,7 @@ var score = 0
 var life = 100.0
 var max_life = 100.0
 var imunidade = false
-@onready var immunity_timer: Timer = $ImmunityTimer  # Certifique-se de adicionar o nó Timer na 
+@onready var immunity_timer: Timer = $ImmunityTimer  
 
 var player = null
 var current_checkpoint = false
@@ -15,10 +15,10 @@ var current_checkpoint = false
 @onready var life_label: Label = $HUD/LifeLabel
 @onready var timer: Timer = $Timer
 	
-func _on_immunity_timeout():
+func _on_immunity_timeout(): # Função para remover a imunidade depois que a duração dela acabar
 	imunidade = false
 	
-func ready():
+func ready(): # Função utilizada para configurar o timer, pode servir para outras coisas futuramente
 	immunity_timer = Timer.new()
 	add_child(immunity_timer)
 	immunity_timer.autostart = false
