@@ -21,6 +21,9 @@ func add_point():
 # Adiciona imunidade ao personagem se ele pegar skill Roll
 func add_imunity():
 	imunidade = true
+
+func remove_imunity():
+	imunidade = false
 	
 func applyDamage(damage: float):
 	if damage > 1:
