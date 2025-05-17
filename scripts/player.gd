@@ -69,8 +69,7 @@ func _physics_process(delta: float) -> void:
 		sprite.rotate(-0.08)
 			
 	# Reproduzir a animação
-	if GameManager.imunidade == true:
-		sprite.visible = true
+	sprite.visible = GameManager.imunidade
 	if is_dashing:
 		animated_sprite.play("roll")
 	elif is_attacking:
@@ -108,6 +107,8 @@ func _physics_process(delta: float) -> void:
 		
 		coyote_timer.start(0.09)
 		can_jump = true
+		
+		$Sprite2D.visible = GameManager.imunidade
 		# Verificar se o personagem sofreu dano de queda
 		if velocidade_queda > VELOCIDADE_LIM:
 			if !GameManager.imunidade:
