@@ -6,6 +6,7 @@ var score = 0
 var life = 100.0
 var max_life = 100.0
 var imunidade = false
+@onready var immunity_timer: Timer = $ImmunityTimer  # Certifique-se de adicionar o nó Timer na 
 
 var player = null
 var current_checkpoint = false
@@ -14,16 +15,28 @@ var current_checkpoint = false
 @onready var life_label: Label = $HUD/LifeLabel
 @onready var timer: Timer = $Timer
 	
+func _on_immunity_timeout():
+	imunidade = false
+	
+func ready():
+	immunity_timer = Timer.new()
+	add_child(immunity_timer)
+	immunity_timer.autostart = false
+	immunity_timer.timeout.connect(_on_immunity_timeout)
+	
 func add_point():
 	score += 1
 	score_label.text = "Você coletou " + str(score) + " moedas"
 	
 # Adiciona imunidade ao personagem se ele pegar skill Roll
-func add_imunity():
+func add_immunity(duration: float):
 	imunidade = true
+	get_tree().create_timer(duration).timeout.connect(
+		func():
+			imunidade = false
+			print("Imunidade removida após ", duration, " segundos")
+	)
 
-func remove_imunity():
-	imunidade = false
 	
 func applyDamage(damage: float):
 	if damage > 1:
@@ -37,7 +50,7 @@ func applyDamage(damage: float):
 			life_label.text = "Você possui 0 de vida"
 			if AudioManager.morte != null:
 				AudioManager.morte.play()
-			death()  
+			death()
 
 func death():
 	Engine.time_scale = 0.5
