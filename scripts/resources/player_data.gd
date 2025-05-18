@@ -4,6 +4,5 @@ extends Resource
 
 @export var vida: float
 @export var pontos: int
-@export var cronometro: int
 @export var pos_x: float
 @export var pos_y: float
