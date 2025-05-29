@@ -1,7 +1,10 @@
 extends Node
 
+@onready var resume_butt = $menu_holder/resume_button
+
 func _ready() -> void:
 	$AnimationPlayer.play("RESET")
+	
 	
 	
 func resume():
@@ -12,7 +15,7 @@ func resume():
 func pause():
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
-	
+	resume_butt.grab_focus()
 	
 func test_esc():
 	if Input.is_action_just_pressed("menu") and get_tree().paused == false:
@@ -28,6 +31,7 @@ func _on_reset_button_pressed() -> void:
 	GameManager.player.global_position.x = -23.0
 	GameManager.player.global_position.y = 1.0
 	GameManager.salvar()
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 	
 
@@ -41,8 +45,9 @@ func _on_resume_button_pressed() -> void:
 
 
 
-#func _on_last_checkpoint_button_pressed() -> void:
-	
+func _on_last_checkpoint_button_pressed() -> void:
+	GameManager.carregar()
+	resume()
 
 
 func _process(delta: float) -> void:

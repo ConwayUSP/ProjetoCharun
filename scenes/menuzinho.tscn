@@ -1,11 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnrn8q6m3ufpk"]
+[gd_scene load_steps=8 format=3 uid="uid://dnrn8q6m3ufpk"]
 
 [ext_resource type="Script" uid="uid://cury6d74avpmu" path="res://scripts/mini_menu.gd" id="1_p3x2o"]
 [ext_resource type="Shader" uid="uid://b5vx8q88vwnpf" path="res://shaders/menuzinho.gdshader" id="2_o6pj0"]
+[ext_resource type="Theme" uid="uid://cw5i1rblg78ng" path="res://themes/menuzinho.tres" id="3_cw425"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cw425"]
 shader = ExtResource("2_o6pj0")
 shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_qrwii"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menu_holder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_o6pj0"]
 resource_name = "blur"
@@ -25,7 +53,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/path = NodePath("menu_holder:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -33,33 +61,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_qrwii"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cw425"]
@@ -76,6 +77,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_p3x2o")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -87,7 +90,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="menu_holder" type="VBoxContainer" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -95,25 +98,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_cw425")
 
-[node name="resume_button" type="Button" parent="VBoxContainer"]
+[node name="resume_button" type="Button" parent="menu_holder"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../quit_button")
+focus_neighbor_bottom = NodePath("../last_checkpoint_button")
+focus_next = NodePath("../last_checkpoint_button")
+focus_previous = NodePath("../quit_button")
 text = "Continue"
 
-[node name="last_checkpoint_button" type="Button" parent="VBoxContainer"]
+[node name="last_checkpoint_button" type="Button" parent="menu_holder"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../resume_button")
+focus_neighbor_bottom = NodePath("../reset_button")
+focus_next = NodePath("../reset_button")
+focus_previous = NodePath("../resume_button")
 text = "Last Checkpoint"
 
-[node name="reset_button" type="Button" parent="VBoxContainer"]
+[node name="reset_button" type="Button" parent="menu_holder"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../last_checkpoint_button")
+focus_neighbor_bottom = NodePath("../quit_button")
+focus_next = NodePath("../quit_button")
+focus_previous = NodePath("../last_checkpoint_button")
 text = "Resetar"
 
-[node name="quit_button" type="Button" parent="VBoxContainer"]
+[node name="quit_button" type="Button" parent="menu_holder"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../reset_button")
+focus_neighbor_bottom = NodePath("../resume_button")
+focus_next = NodePath("../resume_button")
+focus_previous = NodePath("../reset_button")
 text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -121,7 +141,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_cw425")
 }
 
-[connection signal="pressed" from="VBoxContainer/resume_button" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/last_checkpoint_button" to="." method="_on_last_checkpoint_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/reset_button" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="menu_holder/resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="menu_holder/last_checkpoint_button" to="." method="_on_last_checkpoint_button_pressed"]
+[connection signal="pressed" from="menu_holder/reset_button" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="menu_holder/quit_button" to="." method="_on_quit_button_pressed"]
