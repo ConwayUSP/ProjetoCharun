@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c3ksbq2n1vx0o"]
+
+[ext_resource type="FontFile" uid="uid://bqhgbt03a1lyu" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_46efe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myx47"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kukqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5d2l8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7l7mv"]
+
+[resource]
+Button/colors/font_focus_color = Color(0.554762, 0.000222653, 0.554758, 1)
+Button/colors/font_hover_color = Color(0.554762, 0.000222653, 0.554758, 1)
+Button/colors/font_hover_pressed_color = Color(0.554762, 0.000222653, 0.554758, 1)
+Button/colors/font_pressed_color = Color(0.231373, 0, 0.415686, 1)
+Button/fonts/font = ExtResource("1_46efe")
+Button/styles/focus = SubResource("StyleBoxEmpty_myx47")
+Button/styles/hover = SubResource("StyleBoxEmpty_kukqi")
+Button/styles/normal = SubResource("StyleBoxEmpty_5d2l8")
+Button/styles/pressed = SubResource("StyleBoxEmpty_7l7mv")
