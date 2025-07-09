@@ -39,10 +39,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="CronometroLabel" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 395.0
+offset_top = 6.0
+offset_right = 575.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_e26q1")
+theme_override_font_sizes/font_size = 20
+text = "00:00.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
 
 [node name="ImmunityTimer" type="Timer" parent="."]
 
+[node name="CronometroTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CronometroTimer" to="." method="_on_cronometro_timeout"]

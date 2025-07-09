@@ -4,6 +4,7 @@ const caminho: String = "user://Player_Data.tres"
 
 var score = 0
 var life = 100.0
+var cronometro = 0
 var max_life = 100.0
 var imunidade = false
 @onready var immunity_timer: Timer = $ImmunityTimer  
@@ -13,7 +14,9 @@ var current_checkpoint = false
 
 @onready var score_label: Label = $HUD/ScoreLabel
 @onready var life_label: Label = $HUD/LifeLabel
+@onready var cronometro_label: Label = $HUD/CronometroLabel
 @onready var timer: Timer = $Timer
+@onready var cronometro_timer: Timer = $CronometroTimer  
 	
 func _on_immunity_timeout(): # Função para remover a imunidade depois que a duração dela acabar
 	imunidade = false
@@ -24,6 +27,7 @@ func ready(): # Função utilizada para configurar o timer, pode servir para out
 	immunity_timer.autostart = false
 	immunity_timer.timeout.connect(_on_immunity_timeout)
 	
+
 func add_point():
 	score += 1
 	score_label.text = "Você coletou " + str(score) + " moedas"
@@ -67,6 +71,11 @@ func _on_timer_timeout() -> void:
 	print("a")
 	respawn()
 
+func _on_cronometro_timeout() -> void:
+	cronometro += 1 #conta os centésimos de segundos
+	var segundos = int(cronometro/10)
+	cronometro_label.text = "%02d:%02d.%d" % [segundos/60, segundos%60, cronometro%10]
+
 func heal(amount: float):
 	life += amount
 	life = min(life, max_life)  # Garante que não ultrapasse o máximo
@@ -77,7 +86,7 @@ func heal(amount: float):
 func respawn(): #função de respawn
 	player.velocity.y = 0 #zera a velocidade do player pra nn morrer de queda ao respawnar
 	if current_checkpoint != false: #checa se o player passaou por um checkpoint
-		carregar() #função que carrega o player no último checkpoint
+		carregar_pos() #função que carrega o player no último checkpoint
 		life = 100 #reseta vida após morrer
 		score = 0 #reseta score após morrer
 		
@@ -89,6 +98,7 @@ func salvar(): #função pra  salvar os dados do player
 	var save: Resource = load("res://scripts/resources/player_data.gd").new() #cria um recurso de dados novo
 	save.vida = life #define a vida no save
 	save.pontos = score #define o score no save
+	save.cronometro = cronometro #define o cronometro no save
 	save.pos_x = player.global_position.x #define a posição x no save
 	save.pos_y = player.global_position.y #define a posição y no save
 	var err = ResourceSaver.save(save, caminho) #salva o recurso
@@ -96,6 +106,7 @@ func salvar(): #função pra  salvar os dados do player
 	if err == OK: #se tiver salvado, printa os dados q foram salvos
 		print(save.vida)
 		print(save.pontos)
+		print(save.cronometro)
 		print(save.pos_x)
 		print(save.pos_y)
 		
@@ -109,9 +120,18 @@ func carregar(): #função pra carregar um load
 	if load: #se tiver carregado, atualiza os dados para aos anteriores e printa
 		life = load.vida
 		score = load.pontos
+		cronometro = load.cronometro
 		player.global_position.x = load.pos_x
 		player.global_position.y = load.pos_y
 		print(load.vida)
 		print(load.pontos)
+		print(load.cronometro)
 		print(load.pos_x)
 		print(load.pos_y)
+
+func carregar_pos():
+	var load = ResourceLoader.load(caminho)
+	player.global_position.x = load.pos_x
+	player.global_position.y = load.pos_y
+	print(load.pos_x)
+	print(load.pos_y)
