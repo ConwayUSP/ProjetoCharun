@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bdetuqx5opg44"]
+[gd_scene load_steps=30 format=4 uid="uid://bdetuqx5opg44"]
 
 [ext_resource type="Texture2D" uid="uid://ccvscexiw4v2e" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_m0546"]
 [ext_resource type="Script" uid="uid://ci47els0vikmv" path="res://scripts/game.gd" id="1_nfap2"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://co32fnpj0l8mi" path="res://scenes/brackable_tiles.tscn" id="16_ca42v"]
 [ext_resource type="PackedScene" uid="uid://d2avu75vmljph" path="res://scenes/pocao.tscn" id="16_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dddkc012eb2bm" path="res://scenes/checkpoint.tscn" id="20_1kice"]
+[ext_resource type="PackedScene" uid="uid://dnrn8q6m3ufpk" path="res://scenes/menuzinho.tscn" id="21_5newe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epy4c"]
 texture = ExtResource("1_m0546")
@@ -1770,6 +1771,11 @@ collision_layer = 1
 collision_priority = 10.0
 
 [node name="temp_menu" type="CanvasLayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="menuzinho" parent="CanvasLayer" instance=ExtResource("21_5newe")]
 
 [connection signal="body_entered" from="Platforms/AreaGelo" to="Player" method="_on_area_gelo_body_entered"]
 [connection signal="body_exited" from="Platforms/AreaGelo" to="Player" method="_on_area_gelo_body_exited"]
