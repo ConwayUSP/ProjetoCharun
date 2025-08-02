@@ -1,28 +1,211 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnrn8q6m3ufpk"]
+[gd_scene load_steps=16 format=3 uid="uid://dnrn8q6m3ufpk"]
 
 [ext_resource type="Script" uid="uid://cury6d74avpmu" path="res://scripts/mini_menu.gd" id="1_p3x2o"]
+[ext_resource type="Shader" uid="uid://b5vx8q88vwnpf" path="res://shaders/menuzinho.gdshader" id="2_o6pj0"]
+[ext_resource type="FontFile" uid="uid://dj8n0uuj4wyhi" path="res://assets/LibertinusSans-Regular.ttf" id="3_qrwii"]
+[ext_resource type="Texture2D" uid="uid://b2kxufxsxgmdx" path="res://assets/Madeira.png" id="4_5t031"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cw425"]
+shader = ExtResource("2_o6pj0")
+shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c74j"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3dihw"]
+texture = ExtResource("4_5t031")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3ssn"]
+texture = ExtResource("4_5t031")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8c74j"]
+texture = ExtResource("4_5t031")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_waiq6"]
+texture = ExtResource("4_5t031")
+
+[sub_resource type="FontFile" id="FontFile_upmme"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_d8gmo"]
+default_font = SubResource("FontFile_upmme")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(1, 1, 0, 1)
+Button/colors/font_hover_color = Color(1, 1, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 0.635294, 0, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("3_qrwii")
+Button/styles/disabled = SubResource("StyleBoxFlat_8c74j")
+Button/styles/focus = SubResource("StyleBoxTexture_3dihw")
+Button/styles/hover = SubResource("StyleBoxTexture_o3ssn")
+Button/styles/normal = SubResource("StyleBoxTexture_8c74j")
+Button/styles/pressed = SubResource("StyleBoxTexture_waiq6")
+
+[sub_resource type="Animation" id="Animation_qrwii"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menu_holder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o6pj0"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.148]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menu_holder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cw425"]
+_data = {
+&"RESET": SubResource("Animation_qrwii"),
+&"blur": SubResource("Animation_o6pj0")
+}
 
 [node name="menuzinho" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_p3x2o")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cw425")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="reset_button" type="Button" parent="VBoxContainer"]
+[node name="menu_holder" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_d8gmo")
+
+[node name="resume_button" type="Button" parent="menu_holder"]
 layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../quit_button")
+focus_neighbor_bottom = NodePath("../last_checkpoint_button")
+focus_next = NodePath("../last_checkpoint_button")
+focus_previous = NodePath("../quit_button")
+text = "Continuar"
+
+[node name="last_checkpoint_button" type="Button" parent="menu_holder"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../resume_button")
+focus_neighbor_bottom = NodePath("../reset_button")
+focus_next = NodePath("../reset_button")
+focus_previous = NodePath("../resume_button")
+text = "Último Checkpoint"
+
+[node name="reset_button" type="Button" parent="menu_holder"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../last_checkpoint_button")
+focus_neighbor_bottom = NodePath("../quit_button")
+focus_next = NodePath("../quit_button")
+focus_previous = NodePath("../last_checkpoint_button")
 text = "Resetar"
 
-[node name="quit_button" type="Button" parent="VBoxContainer"]
+[node name="quit_button" type="Button" parent="menu_holder"]
 layout_mode = 2
-text = "Quit"
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../reset_button")
+focus_neighbor_bottom = NodePath("../resume_button")
+focus_next = NodePath("../resume_button")
+focus_previous = NodePath("../reset_button")
+text = "Sair"
 
-[connection signal="pressed" from="VBoxContainer/reset_button" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cw425")
+}
+
+[connection signal="pressed" from="menu_holder/resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="menu_holder/last_checkpoint_button" to="." method="_on_last_checkpoint_button_pressed"]
+[connection signal="pressed" from="menu_holder/reset_button" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="menu_holder/quit_button" to="." method="_on_quit_button_pressed"]
