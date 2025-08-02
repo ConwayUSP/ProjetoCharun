@@ -171,7 +171,7 @@ focus_neighbor_top = NodePath("../quit_button")
 focus_neighbor_bottom = NodePath("../last_checkpoint_button")
 focus_next = NodePath("../last_checkpoint_button")
 focus_previous = NodePath("../quit_button")
-text = "Continue"
+text = "Continuar"
 
 [node name="last_checkpoint_button" type="Button" parent="menu_holder"]
 layout_mode = 2
@@ -180,7 +180,7 @@ focus_neighbor_top = NodePath("../resume_button")
 focus_neighbor_bottom = NodePath("../reset_button")
 focus_next = NodePath("../reset_button")
 focus_previous = NodePath("../resume_button")
-text = "Last Checkpoint"
+text = "Último Checkpoint"
 
 [node name="reset_button" type="Button" parent="menu_holder"]
 layout_mode = 2
@@ -198,7 +198,7 @@ focus_neighbor_top = NodePath("../reset_button")
 focus_neighbor_bottom = NodePath("../resume_button")
 focus_next = NodePath("../resume_button")
 focus_previous = NodePath("../reset_button")
-text = "Quit"
+text = "Sair"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
